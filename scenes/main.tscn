@@ -21,7 +21,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262150, 262144, 8, 196614, 262144, 7)
 script = ExtResource("2_lida7")
 
-[node name="Character" type="Sprite2D" parent="Level1"]
+[node name="Player" type="Sprite2D" parent="Level1"]
 position = Vector2(8.00044, 24.0013)
 scale = Vector2(0.126052, 0.126052)
 texture = ExtResource("3_ot8ct")
