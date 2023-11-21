@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=7 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
 [ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_lida7"]
 [ext_resource type="Texture2D" uid="uid://dyenxiyt80ip2" path="res://icon.svg" id="3_ot8ct"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
+bg_color = Color(0.34902, 0.368627, 0.52549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4b2b"]
+bg_color = Color(0.909804, 0.384314, 0.643137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcba2"]
+bg_color = Color(0.486275, 0.670588, 0, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -21,7 +30,38 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262150, 262144, 8, 196614, 262144, 7)
 script = ExtResource("2_lida7")
 
-[node name="Player" type="Sprite2D" parent="Level1"]
+[node name="Character" type="Sprite2D" parent="Level1"]
 position = Vector2(8.00044, 24.0013)
 scale = Vector2(0.126052, 0.126052)
 texture = ExtResource("3_ot8ct")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Panel" parent="GUI"]
+offset_left = 960.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3tq1l")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="GUI/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 500
+
+[node name="Lines" type="ScrollContainer" parent="GUI/Background/VSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4b2b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Background/VSplitContainer/Lines"]
+layout_mode = 2
+
+[node name="Code" type="ScrollContainer" parent="GUI/Background/VSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gcba2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Background/VSplitContainer/Code"]
+layout_mode = 2
