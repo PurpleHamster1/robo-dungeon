@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxagcni04cso4"]
+
+[ext_resource type="Script" path="res://commandBlocks/droppable_zone.gd" id="1_r4awo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2bxw"]
+bg_color = Color(0, 0.721569, 0.270588, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmi3s"]
+size = Vector2(349, 20)
+
+[node name="Droppable" type="Panel"]
+custom_minimum_size = Vector2(40, 20)
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2bxw")
+script = ExtResource("1_r4awo")
+
+[node name="DroppableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DroppableArea"]
+position = Vector2(174.5, 10)
+shape = SubResource("RectangleShape2D_jmi3s")

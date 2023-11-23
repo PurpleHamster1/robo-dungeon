@@ -1,0 +1,5 @@
+extends Panel
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	visible = Global.is_dragging

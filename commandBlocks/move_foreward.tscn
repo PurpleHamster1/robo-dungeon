@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjn13vk3s3scj"]
+
+[ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_dvftq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s8ik"]
+bg_color = Color(0.419608, 0.25098, 1, 1)
+
+[node name="MoveForward" instance=ExtResource("1_dvftq")]
+commandName = "MoveFront"
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_5s8ik")
+
+[node name="Text" parent="Background" index="0"]
+text = "Move Forward"

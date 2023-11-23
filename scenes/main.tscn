@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=10 format=3 uid="uid://cdmo4ma55a7pw"]
 
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
 [ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_lida7"]
 [ext_resource type="Texture2D" uid="uid://dyenxiyt80ip2" path="res://icon.svg" id="3_ot8ct"]
+[ext_resource type="PackedScene" uid="uid://cxagcni04cso4" path="res://commandBlocks/droppable_zone.tscn" id="5_cg0u2"]
+[ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="5_rmmfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.34902, 0.368627, 0.52549, 1)
@@ -14,6 +17,7 @@ bg_color = Color(0.909804, 0.384314, 0.643137, 1)
 bg_color = Color(0.486275, 0.670588, 0, 1)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_88fyu")
 
 [node name="Level1" type="TileMap" parent="."]
 scale = Vector2(4.99972, 4.99972)
@@ -31,7 +35,8 @@ layer_1/tile_data = PackedInt32Array(262150, 262144, 8, 196614, 262144, 7)
 script = ExtResource("2_lida7")
 
 [node name="Character" type="Sprite2D" parent="Level1"]
-position = Vector2(8.00044, 24.0013)
+position = Vector2(8, 24.001)
+rotation = 1.5708
 scale = Vector2(0.126052, 0.126052)
 texture = ExtResource("3_ot8ct")
 
@@ -57,6 +62,22 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e4b2b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/Background/VSplitContainer/Lines"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MoveForward" parent="GUI/Background/VSplitContainer/Lines/VBoxContainer" instance=ExtResource("5_rmmfj")]
+layout_mode = 2
+
+[node name="MoveForward2" parent="GUI/Background/VSplitContainer/Lines/VBoxContainer" instance=ExtResource("5_rmmfj")]
+layout_mode = 2
+
+[node name="MoveForward3" parent="GUI/Background/VSplitContainer/Lines/VBoxContainer" instance=ExtResource("5_rmmfj")]
+layout_mode = 2
+
+[node name="MoveForward4" parent="GUI/Background/VSplitContainer/Lines/VBoxContainer" instance=ExtResource("5_rmmfj")]
+layout_mode = 2
+
+[node name="Droppable" parent="GUI/Background/VSplitContainer/Lines/VBoxContainer" instance=ExtResource("5_cg0u2")]
 layout_mode = 2
 
 [node name="Code" type="ScrollContainer" parent="GUI/Background/VSplitContainer"]
