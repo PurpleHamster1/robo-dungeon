@@ -70,6 +70,11 @@ func _process(delta):
 			if get_closest_drop() != null:
 				if get_closest_drop().name == "DeathArea":
 					queue_free()
+				else:
+					reparent(codingArea, true)
+					codingArea.move_child(self, ghostCode.get_index())
+					draggable = false
+					scale = Vector2(1, 1)
 			else:
 				reparent(codingArea, true)
 				codingArea.move_child(self, ghostCode.get_index())
