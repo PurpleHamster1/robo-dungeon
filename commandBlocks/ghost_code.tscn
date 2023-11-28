@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqn3lgd5dc7qv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhl3p"]
+bg_color = Color(1, 1, 1, 0.0745098)
+
+[node name="GhostCode" type="MarginContainer"]
+z_index = 2
+z_as_relative = false
+custom_minimum_size = Vector2(200, 20)
+theme_override_constants/margin_left = 10
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dhl3p")

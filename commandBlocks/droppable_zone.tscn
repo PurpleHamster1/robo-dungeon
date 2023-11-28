@@ -6,17 +6,18 @@
 bg_color = Color(0, 0.721569, 0.270588, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmi3s"]
-size = Vector2(349, 20)
+size = Vector2(200, 20)
 
-[node name="Droppable" type="Panel"]
-custom_minimum_size = Vector2(40, 20)
-offset_right = 40.0
+[node name="Droppable" type="Panel" groups=["Droppable"]]
+custom_minimum_size = Vector2(0, 2)
+offset_right = 200.0
 offset_bottom = 20.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_b2bxw")
 script = ExtResource("1_r4awo")
+commandName = "Droppable"
 
 [node name="DroppableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DroppableArea"]
-position = Vector2(174.5, 10)
+position = Vector2(100, 10)
 shape = SubResource("RectangleShape2D_jmi3s")

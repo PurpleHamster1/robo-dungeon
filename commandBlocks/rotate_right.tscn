@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbhwunh0kj2ac"]
+
+[ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_ymptu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlvr0"]
+bg_color = Color(0.572549, 0.647059, 0, 1)
+
+[node name="RotateRight" instance=ExtResource("1_ymptu")]
+commandName = "RotateRight"
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_wlvr0")
+
+[node name="Text" parent="Background" index="0"]
+text = "Rotate Right"

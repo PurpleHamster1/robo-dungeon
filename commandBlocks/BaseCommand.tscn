@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbsa6nosfft2q"]
+[gd_scene load_steps=6 format=3 uid="uid://bbsa6nosfft2q"]
 
 [ext_resource type="Script" path="res://commandBlocks/BaseCommand.gd" id="1_6ahbc"]
 
@@ -7,7 +7,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75y6u"]
 size = Vector2(200, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxa1h"]
+size = Vector2(200, 4.49958)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p81gm"]
+size = Vector2(200, 3)
+
 [node name="Command" type="MarginContainer"]
+z_index = 2
+z_as_relative = false
 custom_minimum_size = Vector2(200, 20)
 theme_override_constants/margin_left = 10
 script = ExtResource("1_6ahbc")
@@ -29,12 +37,28 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Do Something LoL"
 
 [node name="Area2D" type="Area2D" parent="Background"]
+visible = false
 position = Vector2(-10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D"]
 position = Vector2(110, 10)
 shape = SubResource("RectangleShape2D_75y6u")
 
+[node name="AreaUp" type="Area2D" parent="Background" groups=["AreaUp", "Droppable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/AreaUp"]
+position = Vector2(100, 0.249788)
+shape = SubResource("RectangleShape2D_sxa1h")
+debug_color = Color(0.705882, 0.266667, 1, 0.419608)
+
+[node name="AreaDown" type="Area2D" parent="Background" groups=["AreaDown", "Droppable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/AreaDown"]
+position = Vector2(100, 20.5)
+shape = SubResource("RectangleShape2D_p81gm")
+debug_color = Color(0.705882, 0.266667, 1, 0.419608)
+
 [connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
 [connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]
 [connection signal="area_entered" from="Background/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Background/Area2D" to="." method="_on_area_2d_area_exited"]
