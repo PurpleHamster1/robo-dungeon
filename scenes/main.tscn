@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=18 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
 [ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_lida7"]
-[ext_resource type="Texture2D" uid="uid://dyenxiyt80ip2" path="res://icon.svg" id="3_ot8ct"]
+[ext_resource type="PackedScene" uid="uid://dibxa3w5slc3" path="res://scenes/character.tscn" id="4_kngvy"]
+[ext_resource type="Script" path="res://scenes/GoalMouseDetection.gd" id="5_4u0go"]
 [ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="5_rmmfj"]
 [ext_resource type="PackedScene" uid="uid://cbhwunh0kj2ac" path="res://commandBlocks/rotate_right.tscn" id="6_iwd40"]
 [ext_resource type="Script" path="res://commandBlocks/ghost_code.gd" id="6_p1g7e"]
+[ext_resource type="FontFile" uid="uid://c5qlnarmp075p" path="res://assets/fonts/rainyhearts.ttf" id="6_w03t7"]
 [ext_resource type="PackedScene" uid="uid://bhb203ih5nh1a" path="res://commandBlocks/rotate_left.tscn" id="7_5j4hy"]
+[ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="7_qt7pa"]
 [ext_resource type="PackedScene" uid="uid://cqn3lgd5dc7qv" path="res://commandBlocks/ghost_code.tscn" id="7_y1o0r"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
 
@@ -26,27 +29,67 @@ size = Vector2(826, 730)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_88fyu")
 
-[node name="Level1" type="TileMap" parent="."]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Level0" type="TileMap" parent="Level"]
 scale = Vector2(4.99972, 4.99972)
 tile_set = ExtResource("1_w7rb4")
 format = 2
 layer_0/name = "Base"
-layer_0/tile_data = PackedInt32Array(65537, 327680, 0, 65538, 327680, 0, 65539, 327680, 0, 65540, 327680, 0, 65541, 327680, 0, 65542, 327680, 0, 65543, 327680, 0, 65544, 327680, 0, 65545, 327680, 0, 131082, 327680, 1, 196618, 327680, 1, 131081, 327680, 1, 131080, 327680, 1, 131079, 327680, 1, 131078, 327680, 1, 131077, 327680, 1, 131076, 327680, 1, 131075, 327680, 1, 131074, 327680, 1, 196610, 327680, 1, 196609, 327680, 1, 131073, 327680, 1, 196611, 327680, 1, 196612, 327680, 1, 196613, 327680, 1, 196614, 327680, 1, 196615, 327680, 1, 196616, 327680, 1, 196617, 327680, 1, 262145, 327680, 1, 327681, 327680, 1, 393217, 327680, 1, 393218, 327680, 1, 393219, 327680, 1, 393220, 327680, 1, 393221, 327680, 1, 327686, 327680, 1, 327687, 327680, 1, 327688, 327680, 1, 327689, 327680, 1, 327690, 327680, 1, 262154, 327680, 1, 262153, 327680, 1, 262152, 327680, 1, 262151, 327680, 1, 262150, 327680, 1, 262149, 327680, 1, 262148, 327680, 1, 262147, 327680, 1, 262146, 327680, 1, 327682, 327680, 1, 327683, 327680, 1, 327684, 327680, 1, 327685, 327680, 1, 393222, 327680, 1, 393223, 327680, 1, 393224, 327680, 1, 393225, 327680, 1, 393226, 327680, 1, 65547, 393216, 0, 131083, 393216, 1, 196619, 393216, 1, 262155, 393216, 1, 327691, 393216, 1, 393227, 393216, 1, 458762, 327680, 1, 458761, 327680, 1, 458760, 327680, 1, 458759, 327680, 1, 458758, 327680, 1, 458757, 327680, 1, 458756, 327680, 1, 458755, 327680, 1, 458754, 327680, 1, 458753, 327680, 1, 393216, 262144, 1, 327680, 262144, 1, 262144, 262144, 1, 196608, 262144, 1, 131072, 262144, 1, 65536, 262144, 0, 458763, 393216, 1, 458752, 262144, 1, 11, 131072, 6, 10, 65536, 2, 9, 65536, 2, 8, 65536, 2, 7, 65536, 2, 6, 65536, 6, 5, 65536, 2, 4, 65536, 2, 3, 65536, 2, 2, 65536, 2, 1, 65536, 2, 0, 0, 6, 524290, 327680, 2, 524289, 327680, 2, 524291, 327680, 2, 524292, 327680, 2, 524293, 327680, 2, 524294, 327680, 2, 524295, 327680, 2, 524296, 327680, 2, 524297, 327680, 2, 524298, 327680, 2, 524299, 393216, 2, 524288, 262144, 2, 65546, 327680, 0)
+layer_0/tile_data = PackedInt32Array(65537, 327680, 1, 65538, 327680, 1, 65539, 327680, 1, 65540, 327680, 1, 65541, 327680, 1, 65542, 327680, 1, 65543, 327680, 1, 65544, 327680, 1, 65545, 327680, 1, 131082, 327680, 1, 196618, 983040, 11, 131081, 983040, 11, 131080, 327680, 1, 131079, 327680, 1, 131078, 327680, 1, 131077, 786432, 11, 131076, 327680, 1, 131075, 327680, 1, 131074, 327680, 1, 196610, 983040, 11, 196609, 327680, 1, 131073, 327680, 1, 196611, 327680, 1, 196612, 327680, 1, 196615, 327680, 1, 196616, 327680, 1, 196617, 327680, 1, 262145, 327680, 1, 327681, 327680, 1, 393217, 786432, 11, 393218, 327680, 1, 393219, 327680, 1, 393220, 327680, 1, 393221, 327680, 1, 327686, 327680, 1, 327687, 327680, 1, 327688, 327680, 1, 327689, 327680, 1, 327690, 327680, 1, 262154, 983040, 11, 262153, 327680, 1, 262152, 327680, 1, 262148, 327680, 1, 262147, 983040, 11, 262146, 327680, 1, 327682, 327680, 1, 327683, 983040, 11, 327684, 327680, 1, 327685, 327680, 1, 393222, 327680, 1, 393223, 327680, 1, 393224, 786432, 11, 393225, 327680, 1, 393226, 327680, 1, 65547, 1245184, 8, 131083, 1245184, 8, 196619, 1245184, 8, 262155, 1245184, 8, 327691, 1245184, 8, 393227, 1245184, 8, 458762, 327680, 1, 458761, 327680, 1, 458760, 327680, 1, 458759, 327680, 1, 458758, 327680, 1, 458757, 327680, 1, 458756, 327680, 1, 458755, 327680, 1, 458754, 327680, 1, 458753, 786432, 11, 393216, 1114112, 8, 327680, 1114112, 8, 262144, 1114112, 8, 196608, 1114112, 8, 131072, 1114112, 8, 65536, 1114112, 8, 458763, 1245184, 8, 458752, 1114112, 8, 11, 131072, 6, 10, 65536, 9, 9, 0, 9, 8, 65536, 2, 7, 65536, 2, 6, 65536, 6, 5, 65536, 2, 4, 65536, 2, 3, 65536, 2, 2, 65536, 2, 1, 65536, 2, 0, 0, 6, 524290, 1179648, 9, 524289, 1179648, 9, 524291, 1179648, 9, 524292, 1179648, 9, 524293, 1179648, 9, 524294, 1179648, 9, 524295, 1179648, 9, 524296, 1179648, 9, 524297, 1179648, 9, 524298, 1179648, 9, 524299, 1245184, 9, 524288, 1114112, 9, 65546, 327680, 1, 262151, 327680, 1, 262150, 327680, 1, 262149, 786432, 11, 196613, 327680, 1, 196614, 327680, 1)
 layer_1/name = "Top"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(262150, 262144, 8, 196614, 262144, 7)
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_lida7")
 initialCharPos = Vector2i(3, 3)
-initialCharRot = 90
+nextLevel = "Level1"
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight"]
 
-[node name="Character" type="Sprite2D" parent="Level1"]
-position = Vector2(40.0022, 24.0013)
-scale = Vector2(0.126052, 0.126052)
-texture = ExtResource("3_ot8ct")
+[node name="Goal" type="Panel" parent="Level/Level0"]
+offset_left = 3.0
+offset_top = 117.0
+offset_right = 78.0
+offset_bottom = 152.0
+scale = Vector2(0.62097, 0.62097)
+script = ExtResource("5_4u0go")
+
+[node name="CheckGoal" type="RichTextLabel" parent="Level/Level0/Goal"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_w03t7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "VERIFICA MISIUNEA"
+
+[node name="GoalDescription" type="Panel" parent="Level/Level0/Goal"]
+visible = false
+layout_mode = 0
+offset_left = 75.0484
+offset_top = -85.3446
+offset_right = 204.048
+offset_bottom = 34.6554
+
+[node name="GoalDescriptionText" type="RichTextLabel" parent="Level/Level0/Goal/GoalDescription"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_qt7pa")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][color= green]Prima misiune este simpla. [/color][/center]
+[font_size= 14]	Ajungi la usa."
+
+[node name="Character" parent="Level/Level0" instance=ExtResource("4_kngvy")]
+scale = Vector2(0.166269, 0.166269)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -132,9 +175,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DeathArea" type="Area2D" parent="GUI" groups=["Droppable"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GUI/DeathArea"]
 position = Vector2(403, 355)
 shape = SubResource("RectangleShape2D_sucy6")
 
-[connection signal="pressed" from="GUI/RunButton" to="Level1" method="_on_run_button_pressed"]
+[connection signal="mouse_entered" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/RunButton" to="Level/Level0" method="_on_run_button_pressed"]

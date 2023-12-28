@@ -1,6 +1,8 @@
 extends VBoxContainer
 
 
+@onready var Level = $"../../../../../Level"
+
 var codeTypes = {
 	"MoveForward": preload("res://commandBlocks/move_foreward.tscn"),
 	"TurnLeft": preload("res://commandBlocks/rotate_left.tscn"),
@@ -14,8 +16,8 @@ func load_code():
 	for c in self.get_children():
 			c.ghostCode.queue_free()
 			c.queue_free()
-	for i in range(codeList.size()):
-		var code = codeList[i].instantiate()
+	for i in range(Level.get_child(0).commandsAv.size()):
+		var code = codeTypes[Level.get_child(0).commandsAv[i]].instantiate()
 		add_child(code)
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -2,10 +2,20 @@ extends TileMap
 
 @export var initialCharPos : Vector2i
 @export var initialCharRot : int
+@export var nextLevel : String
+@export var commandsAv : Array
 
 @onready var robot = $Character
-@onready var commands = $"../GUI/Background/VSplitContainer/Lines/VBoxContainer"
-@onready var runButton = $"../GUI/RunButton"
+@onready var commands = $"../../GUI/Background/VSplitContainer/Lines/VBoxContainer"
+@onready var runButton = $"../../GUI/RunButton"
+
+func check_win_condition():
+	match name:
+		"Level0":
+			if local_to_map(robot.position) == Vector2i(9, 1) or local_to_map(robot.position) == Vector2i(10, 1):
+				print("WIN")
+			else:
+				print(local_to_map(robot.position))
 
 func get_char_tile():
 	return self.get_cell_tile_data(0,self.local_to_map(robot.position)).get_custom_data("Type")
@@ -35,14 +45,26 @@ func move_char(direction : String, steps : int):
 	#print(currentTile)
 	#print(neighborCell)
 	#print(self.map_to_local(neighborCell))
-	robot.position = self.map_to_local(neighborCell)
+	#CHECK IF WALL OR ANYTHING ELSE
+	var tileData = self.get_cell_tile_data(0, neighborCell)
+	if tileData.get_custom_data("Type") == "floor":
+		print("moving to floor")
+		get_tree().create_tween().tween_property(robot, "position", self.map_to_local(neighborCell), 0.5).set_trans(Tween.TRANS_CIRC)
+	elif tileData.get_custom_data("Type") == "wall":
+		print("Moving into wall")
+		var initialPos = robot.position
+		print(initialPos)
+		var wallPos = self.map_to_local(neighborCell)
+		await get_tree().create_tween().tween_property(robot, "position", robot.position + (wallPos - robot.position)/2, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).finished
+		print(initialPos)
+		await get_tree().create_tween().tween_property(robot, "position", initialPos, 0.5).set_trans(Tween.TRANS_BOUNCE).finished
 
 func rotate_char(direction : String):
 	match direction:
 		"Right":
-			robot.rotation_degrees += 90
+			get_tree().create_tween().tween_property(robot, "rotation_degrees", robot.rotation_degrees + 90, 0.5).set_trans(Tween.TRANS_CIRC)
 		"Left":
-			robot.rotation_degrees -= 90
+			get_tree().create_tween().tween_property(robot, "rotation_degrees", robot.rotation_degrees - 90, 0.5).set_trans(Tween.TRANS_CIRC)
 
 func run_code():
 	for i in range(commands.get_child_count()):
@@ -64,7 +86,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	check_win_condition()
 
 
 

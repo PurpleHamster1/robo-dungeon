@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dibxa3w5slc3"]
+
+[ext_resource type="Texture2D" uid="uid://di7uxrxqdvhc3" path="res://assets/robot/LegsDown.PNG" id="1_8moao"]
+[ext_resource type="Script" path="res://scenes/characterSprite.gd" id="1_o2w2d"]
+[ext_resource type="Texture2D" uid="uid://dogdou46pnoxg" path="res://assets/robot/BodyDown.PNG" id="2_mx17o"]
+[ext_resource type="Texture2D" uid="uid://bly8stblnkn53" path="res://assets/robot/HeadDown.PNG" id="3_ak1ma"]
+
+[node name="Character" type="Node2D"]
+texture_filter = 1
+scale = Vector2(0.69677, 0.69677)
+script = ExtResource("1_o2w2d")
+
+[node name="Legs" type="Sprite2D" parent="."]
+modulate = Color(0.419608, 0.501961, 0.556863, 1)
+rotation = -3.14159
+texture = ExtResource("1_8moao")
+
+[node name="Body" type="Sprite2D" parent="."]
+modulate = Color(0.862745, 0.862745, 0.862745, 1)
+position = Vector2(1.76029e-12, -2.44448)
+rotation = -3.14159
+texture = ExtResource("2_mx17o")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(1.76029e-12, -2.44448)
+rotation = -3.14159
+texture = ExtResource("3_ak1ma")
