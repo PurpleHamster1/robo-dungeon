@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=19 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bhb203ih5nh1a" path="res://commandBlocks/rotate_left.tscn" id="7_5j4hy"]
 [ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="7_qt7pa"]
 [ext_resource type="PackedScene" uid="uid://cqn3lgd5dc7qv" path="res://commandBlocks/ghost_code.tscn" id="7_y1o0r"]
+[ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="8_kwj4s"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
@@ -42,7 +43,7 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_lida7")
 initialCharPos = Vector2i(3, 3)
 nextLevel = "Level1"
-commandsAv = ["MoveForward", "TurnLeft", "TurnRight"]
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes"]
 
 [node name="Goal" type="Panel" parent="Level/Level0"]
 offset_left = 3.0
@@ -92,6 +93,12 @@ text = "[center][color= green]Prima misiune este simpla. [/color][/center]
 scale = Vector2(0.166269, 0.166269)
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="RepeatEnd" parent="GUI" instance=ExtResource("8_kwj4s")]
+offset_left = 131.276
+offset_top = 128.0
+offset_right = 341.276
+offset_bottom = 148.0
 
 [node name="GhostCode" parent="GUI" instance=ExtResource("7_y1o0r")]
 visible = false
@@ -164,6 +171,7 @@ offset_left = 808.0
 offset_top = 568.0
 offset_right = 944.0
 offset_bottom = 704.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 23
 text = "RUN CODE"
 clip_text = true

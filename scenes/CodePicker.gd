@@ -6,7 +6,8 @@ extends VBoxContainer
 var codeTypes = {
 	"MoveForward": preload("res://commandBlocks/move_foreward.tscn"),
 	"TurnLeft": preload("res://commandBlocks/rotate_left.tscn"),
-	"TurnRight": preload("res://commandBlocks/rotate_right.tscn")
+	"TurnRight": preload("res://commandBlocks/rotate_right.tscn"),
+	"RepeatTimes": preload("res://commandBlocks/repeat_times.tscn")
 	
 }
 var codeList = [preload("res://commandBlocks/move_foreward.tscn"), preload("res://commandBlocks/rotate_left.tscn"), preload("res://commandBlocks/rotate_right.tscn")]

@@ -1,17 +1,17 @@
 extends MarginContainer
-
 @export var commandName : String
 @export var indent : int = 0
 @export var draggable : bool = false
+@export var repeatStart : Node
 
-@onready var GUI = $"../../../../.."
+@onready var GUI = $".."
 #@onready var marginContainer = $"."
-@onready var draggingZone = $"../../../../../DraggingZone"
+@onready var draggingZone = $"../DraggingZone"
 @onready var area2d = $Background/Area2D
-@onready var codingArea = $"../../../Lines/VBoxContainer" #GUI.find_child("Background").find_child('VSplitContainer').find_child('Lines').find_child('VBoxContainer')
+@onready var codingArea = $"../Background/VSplitContainer/Lines/VBoxContainer" #GUI.find_child("Background").find_child('VSplitContainer').find_child('Lines').find_child('VBoxContainer')
 @onready var ghostCode0 = GUI.find_child("GhostCode", true) #$"../../../../../GhostCode"
 @export var ghostCode : Node
-@onready var codePicker = $"../../../Code/CodePicker"
+@onready var codePicker = $"../Background/VSplitContainer/Code/CodePicker"
 
 var dropZone = null
 var offSet
@@ -64,37 +64,28 @@ func _process(delta):
 				dropZone = get_closest_drop()
 				if dropZone != null:
 					#print(dropZone.name)
-					if commandName == "RepeatTimes" and $Background/RepeatDropDown.deployd == true and $Background/RepeatDropDown.endDeployd == true:
-						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() < $Background/RepeatDropDown.repeatEnd.get_index():
+					if dropZone.get_parent().get_parent().get_index() >= repeatStart.get_index():
+						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > repeatStart.get_index():
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
-						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() < $Background/RepeatDropDown.repeatEnd.get_index():
+						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > repeatStart.get_index() + 1:
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
 					else:
-						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
-							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
-						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
-							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
+						codingArea.move_child(ghostCode, repeatStart.get_index() + 1)
+						pass
 				else:
 					#print("No dropzone")
 					#ghostCode.reparent(draggingZone)
+					
 					pass
 			if frameDebounce > 0:
 				frameDebounce -= 1
 		elif Input.is_action_just_released("click") and Global.is_dragging == true:
 			Global.is_dragging = false
 			if get_closest_drop() != null:
-				if get_closest_drop().name == "DeathArea":
-					if commandName == "RepeatTimes":
-						$Background/RepeatDropDown.repeatEnd.ghostCode.queue_free()
-						$Background/RepeatDropDown.repeatEnd.queue_free()
-						pass
-					ghostCode.queue_free()
-					queue_free()
-				else:
-					reparent(codingArea, true)
-					codingArea.move_child(self, ghostCode.get_index())
-					draggable = false
-					scale = Vector2(1, 1)
+				reparent(codingArea, true)
+				codingArea.move_child(self, ghostCode.get_index())
+				draggable = false
+				scale = Vector2(1, 1)
 			else:
 				reparent(codingArea, true)
 				codingArea.move_child(self, ghostCode.get_index())
@@ -102,7 +93,6 @@ func _process(delta):
 				scale = Vector2(1, 1)
 			ghostCode.reparent(GUI, true)
 			ghostCode.visible = false
-
 func _on_background_mouse_entered():
 	if Global.is_dragging == false and Global.state != "running":
 		draggable = true
