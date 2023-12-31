@@ -8,7 +8,9 @@ extends TileMap
 @onready var robot = $Character
 @onready var commands = $"../../GUI/Background/VSplitContainer/Lines/VBoxContainer"
 @onready var runButton = $"../../GUI/RunButton"
+@onready var errorPanel = $"../../GUI/ErrorPanel"
 var tween
+var errorIndex = -1
 
 func check_win_condition():
 	match name:
@@ -71,6 +73,52 @@ func rotate_char(direction : String):
 			tween = get_tree().create_tween()
 			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees - 90, 0.5).set_trans(Tween.TRANS_CIRC)
 
+func check_repeat_end_difference_bellow(index):
+	var diff = 0
+	for i in range(index, commands.get_child_count(), 1):
+		if commands.get_child(i).commandName == "RepeatTimes":
+			diff -= 1
+		elif commands.get_child(i).commandName == "RepeatEnd":
+			diff += 1
+	return diff
+
+func check_repeat_end_difference_above(index):
+	var diff = 0
+	for i in range(index, 0, -1):
+		if commands.get_child(i).commandName == "RepeatTimes":
+			diff += 1
+		elif commands.get_child(i).commandName == "RepeatEnd":
+			diff -= 1
+	return diff
+
+func check_code_for_errors():
+	#check repeat errors
+	var error = false
+	for code in commands.get_children():
+		if code.is_in_group("Command"):
+			if code.commandName == "RepeatTimes":
+				if check_repeat_end_difference_bellow(code.get_index()) < 0:
+					print("Error at index " + str(code.get_index()))
+					errorIndex = code.get_index()
+					#set the block red
+					code.modulate.g = 0
+					code.modulate.b = 0
+					error = true
+					break
+	if error == true:
+		Global.state = "error"
+	else:
+		Global.state = "coding"
+		errorIndex = -1
+
+func set_indent():
+	for code in commands.get_children():
+		if code.is_in_group("Command"):
+			var toIndent = check_repeat_end_difference_above(code.get_index())
+			if code.commandName == "RepeatTimes":
+				toIndent -= 1
+			code.indent = toIndent
+
 func run_code():
 	for i in range(commands.get_child_count()):
 		if Global.state == "coding":
@@ -94,7 +142,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#check if ghostcode
+	var ghostCode = false
+	for code in commands.get_children():
+		if code.is_in_group("Ghost"):
+			print("There is ghost code")
+			ghostCode = true
+			break
+	
 	check_win_condition()
+	if ghostCode == false:
+		check_code_for_errors()
+		set_indent()
+	if Global.state == "error":
+		runButton.text = "ERROR"
+		errorPanel.visible = true
+	elif Global.state == "coding":
+		runButton.text = "Run"
+		errorPanel.visible = false
+	print(Global.state)
 
 
 

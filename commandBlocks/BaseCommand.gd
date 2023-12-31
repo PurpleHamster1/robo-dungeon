@@ -29,6 +29,14 @@ func get_closest_drop():
 				closestDrop = body
 	return closestDrop
 
+func get_highest_end_index():
+	var highestIndex = -1
+	for code in codingArea.get_children():
+		if code.is_in_group("Command"):
+			if code.commandName == "RepeatEnd" and code.get_index() > highestIndex:
+				highestIndex = code.get_index()
+	return highestIndex
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ghostCode = ghostCode0.duplicate(15)
@@ -37,9 +45,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	add_theme_constant_override("margin_left", 10 + (indent * 10))
+	add_theme_constant_override("margin_left", 10 + (indent * 30))
 	if draggable == true:
 		if Input.is_action_just_pressed('click') and Global.is_dragging == false:
+			
 			Global.is_dragging = true
 			offSet = get_global_mouse_position() - global_position
 			initialIndex = self.get_index()
@@ -65,10 +74,14 @@ func _process(delta):
 				if dropZone != null:
 					#print(dropZone.name)
 					if commandName == "RepeatTimes" and $Background/RepeatDropDown.deployd == true and $Background/RepeatDropDown.endDeployd == true:
-						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() < $Background/RepeatDropDown.repeatEnd.get_index():
-							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
-						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() < $Background/RepeatDropDown.repeatEnd.get_index():
-							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
+						if dropZone.get_parent().get_parent().get_index(): #< get_highest_end_index():
+							if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index():
+								codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
+							elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index() + 1:
+								codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
+						else:
+							#codingArea.move_child(ghostCode, get_highest_end_index() - 1)
+							pass
 					else:
 						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
@@ -102,6 +115,12 @@ func _process(delta):
 				scale = Vector2(1, 1)
 			ghostCode.reparent(GUI, true)
 			ghostCode.visible = false
+	#reset modulate in case of error
+	if Global.state != "error":
+		modulate.r = 1
+		modulate.g = 1
+		modulate.b = 1
+	#set the 
 
 func _on_background_mouse_entered():
 	if Global.is_dragging == false and Global.state != "running":

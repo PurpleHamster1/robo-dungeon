@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=20 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cqn3lgd5dc7qv" path="res://commandBlocks/ghost_code.tscn" id="7_y1o0r"]
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="8_kwj4s"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
+[ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.34902, 0.368627, 0.52549, 1)
@@ -45,11 +46,14 @@ initialCharPos = Vector2i(3, 3)
 nextLevel = "Level1"
 commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes"]
 
+[node name="Character" parent="Level/Level0" instance=ExtResource("4_kngvy")]
+scale = Vector2(0.166269, 0.166269)
+
 [node name="Goal" type="Panel" parent="Level/Level0"]
 offset_left = 3.0
-offset_top = 117.0
-offset_right = 78.0
-offset_bottom = 152.0
+offset_top = 128.0
+offset_right = 132.0
+offset_bottom = 145.0
 scale = Vector2(0.62097, 0.62097)
 script = ExtResource("5_4u0go")
 
@@ -70,10 +74,10 @@ text = "VERIFICA MISIUNEA"
 [node name="GoalDescription" type="Panel" parent="Level/Level0/Goal"]
 visible = false
 layout_mode = 0
-offset_left = 75.0484
-offset_top = -85.3446
-offset_right = 204.048
-offset_bottom = 34.6554
+offset_left = 0.322357
+offset_top = -118.842
+offset_right = 129.322
+offset_bottom = 1.15759
 
 [node name="GoalDescriptionText" type="RichTextLabel" parent="Level/Level0/Goal/GoalDescription"]
 layout_mode = 1
@@ -89,12 +93,10 @@ bbcode_enabled = true
 text = "[center][color= green]Prima misiune este simpla. [/color][/center]
 [font_size= 14]	Ajungi la usa."
 
-[node name="Character" parent="Level/Level0" instance=ExtResource("4_kngvy")]
-scale = Vector2(0.166269, 0.166269)
-
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="RepeatEnd" parent="GUI" instance=ExtResource("8_kwj4s")]
+visible = false
 offset_left = 131.276
 offset_top = 128.0
 offset_right = 341.276
@@ -188,6 +190,30 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GUI/DeathArea"]
 position = Vector2(403, 355)
 shape = SubResource("RectangleShape2D_sucy6")
+
+[node name="ErrorPanel" type="Panel" parent="GUI"]
+offset_left = 496.0
+offset_top = 144.0
+offset_right = 960.0
+offset_bottom = 552.0
+
+[node name="TextError" type="RichTextLabel" parent="GUI/ErrorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 13
+theme_override_fonts/normal_font = ExtResource("15_k210x")
+bbcode_enabled = true
+text = "
+[center][font_size= 30][color= red] Oh nu![/color][/font_size][/center]
+
+ [font_size= 18]Se pare ca este o eroare la blocul de cod 
+evidentiat in rosu. 
+ Cel mai probabil blocul de cod \"Repeta\" nu are un bloc de cod \"Inapoi\" care sa il inchida."
 
 [connection signal="mouse_entered" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_exited"]

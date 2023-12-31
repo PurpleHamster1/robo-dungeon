@@ -13,7 +13,7 @@ size = Vector2(200, 4.49958)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p81gm"]
 size = Vector2(200, 3)
 
-[node name="Command" type="MarginContainer"]
+[node name="Command" type="MarginContainer" groups=["Command"]]
 z_index = 2
 z_as_relative = false
 custom_minimum_size = Vector2(200, 20)

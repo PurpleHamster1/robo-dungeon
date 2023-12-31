@@ -17,6 +17,7 @@ var dropZone = null
 var offSet
 var initialParent
 var initialIndex
+var startingIndex
 var frameDebounce = 3
 
 func get_closest_drop():
@@ -29,6 +30,41 @@ func get_closest_drop():
 				closestDrop = body
 	return closestDrop
 
+func calculate_repeating_above(index):
+	var repeatingAbove = 0
+	for i in range(index, -1, -1):
+		if codingArea.get_child(i).is_in_group("Command"):
+			if codingArea.get_child(i).commandName == "RepeatEnd":
+				repeatingAbove += 1
+			elif codingArea.get_child(i).commandName == "RepeatTimes":
+				repeatingAbove -= 1
+	return repeatingAbove
+
+func calculate_repleating_below(index):
+	var repeatingBelow = 0
+	for i in range(index, codingArea.get_child_count(), 1):
+		if codingArea.get_child(i).commandName == "RepeatEnd":
+			repeatingBelow += 1
+		elif codingArea.get_child(i).commandName == "RepeatTimes":
+			repeatingBelow -= 1
+	return repeatingBelow
+
+func get_highest_repeat_index():
+	var highestIndex = -1
+	for code in codingArea.get_children():
+		if code.is_in_group("Command"):
+			if code.commandName == "RepeatTimes" and code.get_index() > highestIndex:
+				highestIndex = code.get_index()
+	return highestIndex
+
+func get_lowest_repeat_index():
+	var index = 5000
+	for code in codingArea.get_children():
+		if code.is_in_group("Command"):
+			if code.commandName == "RepeatTimes" and code.get_index() < index:
+				index = code.get_index()
+	return index
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ghostCode = ghostCode0.duplicate(15)
@@ -37,12 +73,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	add_theme_constant_override("margin_left", 10 + (indent * 10))
+	add_theme_constant_override("margin_left", 10 + (indent * 30))
 	if draggable == true:
 		if Input.is_action_just_pressed('click') and Global.is_dragging == false:
 			Global.is_dragging = true
 			offSet = get_global_mouse_position() - global_position
 			initialIndex = self.get_index()
+			startingIndex = get_index()
 			#CODE THAT MAKES YOU CRY V
 			if self.get_parent().name == "CodePicker":
 				initialIndex = codingArea.get_child_count()
@@ -60,17 +97,17 @@ func _process(delta):
 			if ghostCode.get_parent() != codingArea:
 				ghostCode.reparent(codingArea, true)
 			if frameDebounce == 0:
-				frameDebounce = 3
+				frameDebounce = 2
 				dropZone = get_closest_drop()
 				if dropZone != null:
 					#print(dropZone.name)
-					if dropZone.get_parent().get_parent().get_index() >= repeatStart.get_index():
-						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > repeatStart.get_index():
+					if dropZone.get_parent().get_parent().get_index() >= get_lowest_repeat_index():
+						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > get_lowest_repeat_index():
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
-						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > repeatStart.get_index() + 1:
+						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer" and dropZone.get_parent().get_parent().get_index() > get_lowest_repeat_index() + 1:
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
 					else:
-						codingArea.move_child(ghostCode, repeatStart.get_index() + 1)
+						codingArea.move_child(ghostCode, get_lowest_repeat_index() + 1)
 						pass
 				else:
 					#print("No dropzone")
@@ -93,6 +130,7 @@ func _process(delta):
 				scale = Vector2(1, 1)
 			ghostCode.reparent(GUI, true)
 			ghostCode.visible = false
+	#set
 func _on_background_mouse_entered():
 	if Global.is_dragging == false and Global.state != "running":
 		draggable = true

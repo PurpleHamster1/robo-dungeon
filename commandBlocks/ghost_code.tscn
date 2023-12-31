@@ -3,7 +3,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhl3p"]
 bg_color = Color(1, 1, 1, 0.0745098)
 
-[node name="GhostCode" type="MarginContainer"]
+[node name="GhostCode" type="MarginContainer" groups=["Ghost"]]
 z_index = 2
 z_as_relative = false
 custom_minimum_size = Vector2(200, 20)

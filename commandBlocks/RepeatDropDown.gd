@@ -7,9 +7,12 @@ extends OptionButton
 @onready var GUI = $"../../../../../../.."
 @onready var repeatEnd0 = GUI.find_child("RepeatEnd", true)
 @onready var mainBody = $"../.."
+@onready var codingArea = $"../../../../../Lines/VBoxContainer"
 
 @export var deployd = false
 @export var endDeployd = false
+
+var indentDebouceFrameCount = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +41,16 @@ func _process(delta):
 		repeatEnd.reparent(mainBody.get_parent(), true)
 		mainBody.get_parent().move_child(repeatEnd, mainBody.get_index()+1)
 		repeatEnd.visible = true
+	
+	#set the repeat end
+	if deployd == true and mainBody.get_parent().name == "VBoxContainer" and endDeployd == true and Global.state != "error":
+		if indentDebouceFrameCount == 0:
+			for i in range(mainBody.get_index(), mainBody.get_parent().get_child_count(), 1):
+				if codingArea.get_child(i).is_in_group("Command"):
+					if codingArea.get_child(i).commandName == "RepeatEnd" and codingArea.get_child(i).indent == mainBody.indent:
+						repeatEnd = codingArea.get_child(i)
+		else:
+			indentDebouceFrameCount -= 1
 
 
 func _on_item_selected(index):
