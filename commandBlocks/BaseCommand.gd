@@ -19,6 +19,8 @@ var initialParent
 var initialIndex
 var frameDebounce = 3
 
+
+
 func get_closest_drop():
 	var closestDistance = INF
 	var closestDrop = null
@@ -39,6 +41,7 @@ func get_highest_end_index():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	ghostCode = ghostCode0.duplicate(15)
 	GUI.add_child.call_deferred(ghostCode)
 	ghostCode.visible = false
@@ -59,7 +62,7 @@ func _process(delta):
 			codingArea.move_child(ghostCode, initialIndex)
 			self.reparent(draggingZone, true)
 			codePicker.load_code()
-			print(ghostCode.get_index())
+			#print(ghostCode.get_index())
 		if Input.is_action_pressed("click") and Global.is_dragging == true:
 			#print("Dragging")
 			if offSet:
@@ -74,14 +77,10 @@ func _process(delta):
 				if dropZone != null:
 					#print(dropZone.name)
 					if commandName == "RepeatTimes" and $Background/RepeatDropDown.deployd == true and $Background/RepeatDropDown.endDeployd == true:
-						if dropZone.get_parent().get_parent().get_index(): #< get_highest_end_index():
-							if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index():
-								codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
-							elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index() + 1:
-								codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
-						else:
-							#codingArea.move_child(ghostCode, get_highest_end_index() - 1)
-							pass
+						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index():
+							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
+						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index() + 1:
+							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
 					else:
 						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())

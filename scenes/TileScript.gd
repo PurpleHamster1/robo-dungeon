@@ -9,6 +9,7 @@ extends TileMap
 @onready var commands = $"../../GUI/Background/VSplitContainer/Lines/VBoxContainer"
 @onready var runButton = $"../../GUI/RunButton"
 @onready var errorPanel = $"../../GUI/ErrorPanel"
+@onready var arrow = $"../../GUI/Arrow"
 var tween
 var errorIndex = -1
 
@@ -39,7 +40,7 @@ func move_char(direction : String, steps : int):
 	else:
 		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
 	var neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
-	print(int(abs(round(robot.rotation_degrees / 90)))-1)
+	#print(int(abs(round(robot.rotation_degrees / 90)))-1)
 	
 	var neighborCell
 	match direction:
@@ -84,7 +85,7 @@ func check_repeat_end_difference_bellow(index):
 
 func check_repeat_end_difference_above(index):
 	var diff = 0
-	for i in range(index, 0, -1):
+	for i in range(index, -1, -1):
 		if commands.get_child(i).commandName == "RepeatTimes":
 			diff += 1
 		elif commands.get_child(i).commandName == "RepeatEnd":
@@ -119,9 +120,12 @@ func set_indent():
 				toIndent -= 1
 			code.indent = toIndent
 
+
 func run_code():
-	for i in range(commands.get_child_count()):
+	var i = 0
+	while i < commands.get_child_count():
 		if Global.state == "coding":
+			print("BROKE")
 			break
 		var codeBlock = commands.get_child(i)
 		if codeBlock.commandName != "Droppable":
@@ -132,7 +136,19 @@ func run_code():
 					rotate_char("Right")
 				"RotateLeft":
 					rotate_char("Left")
+				"RepeatEnd":
+					var repeatBlockStart = codeBlock.repeatStart
+					print("Repeat amount left" + str(repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft))
+					if repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft > 1:
+						repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft -= 1
+						Global.reset_repeat_times.emit(repeatBlockStart.indent)
+						i = repeatBlockStart.get_index()
+			print(i)
+			#move the arrow
+			tween = get_tree().create_tween()
+			tween.tween_property(arrow, "global_position", Vector2(arrow.global_position.x, codeBlock.global_position.y+9), 0.1)
 			await get_tree().create_timer(Global.ticktime).timeout
+			i+=1
 
 func _ready():
 	teleport_char(initialCharPos)
@@ -151,7 +167,7 @@ func _process(delta):
 			break
 	
 	check_win_condition()
-	if ghostCode == false:
+	if ghostCode == false and Global.state != "running":
 		check_code_for_errors()
 		set_indent()
 	if Global.state == "error":
@@ -160,20 +176,23 @@ func _process(delta):
 	elif Global.state == "coding":
 		runButton.text = "Run"
 		errorPanel.visible = false
-	print(Global.state)
+	#print(Global.state)
 
 
 
 func _on_run_button_pressed():
 	if Global.state == "coding":
+		teleport_char(initialCharPos)
 		Global.state = "running"
 		runButton.text = "RUNNING"
+		Global.reset_repeat_times.emit(0)
 		await run_code()
 		print("done running")
 		if Global.state == "running":
 			Global.state = "awaitingRestart"
 			runButton.text = "RESTART"
 	elif Global.state == "awaitingRestart":
+		Global.reset_repeat_times.emit(0)
 		Global.state = "coding"
 		runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)

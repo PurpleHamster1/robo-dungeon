@@ -12,6 +12,7 @@ extends MarginContainer
 @onready var ghostCode0 = GUI.find_child("GhostCode", true) #$"../../../../../GhostCode"
 @export var ghostCode : Node
 @onready var codePicker = $"../Background/VSplitContainer/Code/CodePicker"
+var indentLine
 
 var dropZone = null
 var offSet
@@ -65,11 +66,24 @@ func get_lowest_repeat_index():
 				index = code.get_index()
 	return index
 
+func indent_lines():
+	indentLine.scale = Vector2(1, 1)
+	if get_parent().name == "VBoxContainer" and repeatStart.get_parent().name == "VBoxContainer":
+		indentLine.visible = true
+		var indexDiff = get_index() - repeatStart.get_index()
+		indentLine.size.y = 20 + (35 * indexDiff)
+		#if scale.x != 1:
+			#indentLine.scale = Vector2(1, 1/1.09)
+	else:
+		indentLine.visible = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ghostCode = ghostCode0.duplicate(15)
 	GUI.add_child.call_deferred(ghostCode)
 	ghostCode.visible = false
+	if commandName == "RepeatEnd":
+		indentLine = $Background/IndentLines/IndentLine
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -87,7 +101,7 @@ func _process(delta):
 			codingArea.move_child(ghostCode, initialIndex)
 			self.reparent(draggingZone, true)
 			codePicker.load_code()
-			print(ghostCode.get_index())
+			#print(ghostCode.get_index())
 		if Input.is_action_pressed("click") and Global.is_dragging == true:
 			#print("Dragging")
 			if offSet:
@@ -130,11 +144,12 @@ func _process(delta):
 				scale = Vector2(1, 1)
 			ghostCode.reparent(GUI, true)
 			ghostCode.visible = false
-	#set
+	#set indent
+	indent_lines()
 func _on_background_mouse_entered():
 	if Global.is_dragging == false and Global.state != "running":
 		draggable = true
-		scale = Vector2(1.1, 1.1)
+		scale = Vector2(1, 1)
 
 func _on_background_mouse_exited():
 	if Global.is_dragging == false:

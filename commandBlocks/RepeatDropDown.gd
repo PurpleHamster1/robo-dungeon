@@ -1,6 +1,7 @@
 extends OptionButton
 
 @export var repeatAmount : int
+@export var repeatAmountLeft : int
 @export var repeatEnd : Node
 
 
@@ -14,13 +15,20 @@ extends OptionButton
 
 var indentDebouceFrameCount = 1
 
+func reset_times(indent):
+	if mainBody.indent > indent:
+		repeatAmountLeft = repeatAmount
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.reset_repeat_times.connect(reset_times.bind())
 	repeatEnd = repeatEnd0.duplicate(15)
 	GUI.add_child.call_deferred(repeatEnd)
 	repeatEnd.visible = false
 	repeatEnd.repeatStart = mainBody
 	selected = 0
+	repeatAmount = 2
+	repeatAmountLeft = repeatAmount
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +50,12 @@ func _process(delta):
 		mainBody.get_parent().move_child(repeatEnd, mainBody.get_index()+1)
 		repeatEnd.visible = true
 	
+	#make it so you can't change while code is running
+	if Global.state == "running":
+		button_mask = 0
+	else:
+		button_mask = MOUSE_BUTTON_MASK_LEFT
+	
 	#set the repeat end
 	if deployd == true and mainBody.get_parent().name == "VBoxContainer" and endDeployd == true and Global.state != "error":
 		if indentDebouceFrameCount == 0:
@@ -49,9 +63,11 @@ func _process(delta):
 				if codingArea.get_child(i).is_in_group("Command"):
 					if codingArea.get_child(i).commandName == "RepeatEnd" and codingArea.get_child(i).indent == mainBody.indent:
 						repeatEnd = codingArea.get_child(i)
+						codingArea.get_child(i).repeatStart = mainBody
 		else:
 			indentDebouceFrameCount -= 1
 
 
 func _on_item_selected(index):
 	repeatAmount = index + 2
+	repeatAmountLeft = repeatAmount

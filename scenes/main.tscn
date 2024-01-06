@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=21 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="8_kwj4s"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
+[ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.34902, 0.368627, 0.52549, 1)
@@ -214,6 +215,11 @@ text = "
  [font_size= 18]Se pare ca este o eroare la blocul de cod 
 evidentiat in rosu. 
  Cel mai probabil blocul de cod \"Repeta\" nu are un bloc de cod \"Inapoi\" care sa il inchida."
+
+[node name="Arrow" type="Sprite2D" parent="GUI"]
+position = Vector2(944, 8)
+scale = Vector2(0.109375, 0.109375)
+texture = ExtResource("16_4o0c0")
 
 [connection signal="mouse_entered" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_exited"]
