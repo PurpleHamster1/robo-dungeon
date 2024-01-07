@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqn3lgd5dc7qv"]
+[gd_scene load_steps=3 format=3 uid="uid://cqn3lgd5dc7qv"]
+
+[ext_resource type="Script" path="res://commandBlocks/ghost_code.gd" id="1_ppra3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhl3p"]
 bg_color = Color(1, 1, 1, 0.0745098)
@@ -8,6 +10,7 @@ z_index = 2
 z_as_relative = false
 custom_minimum_size = Vector2(200, 20)
 theme_override_constants/margin_left = 10
+script = ExtResource("1_ppra3")
 
 [node name="Background" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 0)

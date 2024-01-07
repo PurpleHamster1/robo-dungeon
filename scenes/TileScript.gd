@@ -12,6 +12,7 @@ extends TileMap
 @onready var arrow = $"../../GUI/Arrow"
 var tween
 var errorIndex = -1
+var ghostCode
 
 func check_win_condition():
 	match name:
@@ -77,19 +78,21 @@ func rotate_char(direction : String):
 func check_repeat_end_difference_bellow(index):
 	var diff = 0
 	for i in range(index, commands.get_child_count(), 1):
-		if commands.get_child(i).commandName == "RepeatTimes":
-			diff -= 1
-		elif commands.get_child(i).commandName == "RepeatEnd":
-			diff += 1
+		if commands.get_child(i).is_in_group("Ghost") == false:
+			if commands.get_child(i).commandName == "RepeatTimes":
+				diff -= 1
+			elif commands.get_child(i).commandName == "RepeatEnd":
+				diff += 1
 	return diff
 
 func check_repeat_end_difference_above(index):
 	var diff = 0
 	for i in range(index, -1, -1):
-		if commands.get_child(i).commandName == "RepeatTimes":
-			diff += 1
-		elif commands.get_child(i).commandName == "RepeatEnd":
-			diff -= 1
+		if commands.get_child(i).is_in_group("Ghost") == false:
+			if commands.get_child(i).commandName == "RepeatTimes":
+				diff += 1
+			elif commands.get_child(i).commandName == "RepeatEnd":
+				diff -= 1
 	return diff
 
 func check_code_for_errors():
@@ -114,10 +117,11 @@ func check_code_for_errors():
 
 func set_indent():
 	for code in commands.get_children():
-		if code.is_in_group("Command"):
+		if code.is_in_group("Command") and ghostCode == false:
 			var toIndent = check_repeat_end_difference_above(code.get_index())
-			if code.commandName == "RepeatTimes":
-				toIndent -= 1
+			if code.is_in_group("Ghost") == false:
+				if code.commandName == "RepeatTimes":
+					toIndent -= 1
 			code.indent = toIndent
 
 
@@ -159,7 +163,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#check if ghostcode
-	var ghostCode = false
+	ghostCode = false
 	for code in commands.get_children():
 		if code.is_in_group("Ghost"):
 			print("There is ghost code")
@@ -167,8 +171,9 @@ func _process(delta):
 			break
 	
 	check_win_condition()
-	if ghostCode == false and Global.state != "running":
-		check_code_for_errors()
+	if Global.state != "running":
+		if ghostCode == false:
+			check_code_for_errors()
 		set_indent()
 	if Global.state == "error":
 		runButton.text = "ERROR"

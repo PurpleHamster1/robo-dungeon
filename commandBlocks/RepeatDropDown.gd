@@ -33,13 +33,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if mainBody.ghostCode.visible == true and deployd == false:
-		repeatEnd.ghostCode.visible = true
-		repeatEnd.ghostCode.reparent(mainBody.ghostCode.get_parent(), true)
-		mainBody.ghostCode.get_parent().move_child(repeatEnd.ghostCode, mainBody.ghostCode.get_index()+1)
-	elif repeatEnd.get_parent().name == "VBoxContainer":
-		repeatEnd.ghostCode.visible = false
-		repeatEnd.ghostCode.reparent(mainBody.ghostCode.get_parent(), true)
+	if repeatEnd != null:
+		if mainBody.ghostCode.visible == true and deployd == false:
+			repeatEnd.ghostCode.visible = true
+			repeatEnd.ghostCode.reparent(mainBody.ghostCode.get_parent(), true)
+			mainBody.ghostCode.get_parent().move_child(repeatEnd.ghostCode, mainBody.ghostCode.get_index()+1)
+		elif repeatEnd.get_parent().name == "VBoxContainer":
+			repeatEnd.ghostCode.visible = false
+			repeatEnd.ghostCode.reparent(mainBody.ghostCode.get_parent(), true)
 	
 	if mainBody.get_parent().name == "VBoxContainer":
 		deployd = true
