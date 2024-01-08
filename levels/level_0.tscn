@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4v861ioa1j71"]
+
+[ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_yi0om"]
+[ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_6nt7g"]
+[ext_resource type="PackedScene" uid="uid://dibxa3w5slc3" path="res://scenes/character.tscn" id="3_gfijp"]
+[ext_resource type="Script" path="res://scenes/GoalMouseDetection.gd" id="4_ygrlc"]
+[ext_resource type="FontFile" uid="uid://c5qlnarmp075p" path="res://assets/fonts/rainyhearts.ttf" id="5_4qlwl"]
+[ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="6_au5so"]
+
+[node name="Level0" type="TileMap"]
+scale = Vector2(4.99972, 4.99972)
+tile_set = ExtResource("1_yi0om")
+format = 2
+layer_0/name = "Base"
+layer_0/tile_data = PackedInt32Array(65537, 327680, 1, 65538, 327680, 1, 65539, 327680, 1, 65540, 327680, 1, 65541, 327680, 1, 65542, 327680, 1, 65543, 327680, 1, 65544, 327680, 1, 65545, 327680, 1, 131082, 327680, 1, 196618, 983040, 11, 131081, 983040, 11, 131080, 327680, 1, 131079, 327680, 1, 131078, 327680, 1, 131077, 786432, 11, 131076, 327680, 1, 131075, 327680, 1, 131074, 327680, 1, 196610, 983040, 11, 196609, 327680, 1, 131073, 327680, 1, 196611, 327680, 1, 196612, 327680, 1, 196615, 327680, 1, 196616, 327680, 1, 196617, 327680, 1, 262145, 327680, 1, 327681, 327680, 1, 393217, 786432, 11, 393218, 327680, 1, 393219, 327680, 1, 393220, 327680, 1, 393221, 327680, 1, 327686, 327680, 1, 327687, 327680, 1, 327688, 327680, 1, 327689, 327680, 1, 327690, 327680, 1, 262154, 983040, 11, 262153, 327680, 1, 262152, 327680, 1, 262148, 327680, 1, 262147, 983040, 11, 262146, 327680, 1, 327682, 327680, 1, 327683, 983040, 11, 327684, 327680, 1, 327685, 327680, 1, 393222, 327680, 1, 393223, 327680, 1, 393224, 786432, 11, 393225, 327680, 1, 393226, 327680, 1, 65547, 1245184, 8, 131083, 1245184, 8, 196619, 1245184, 8, 262155, 1245184, 8, 327691, 1245184, 8, 393227, 1245184, 8, 458762, 327680, 1, 458761, 327680, 1, 458760, 327680, 1, 458759, 327680, 1, 458758, 327680, 1, 458757, 327680, 1, 458756, 327680, 1, 458755, 327680, 1, 458754, 327680, 1, 458753, 786432, 11, 393216, 1114112, 8, 327680, 1114112, 8, 262144, 1114112, 8, 196608, 1114112, 8, 131072, 1114112, 8, 65536, 1114112, 8, 458763, 1245184, 8, 458752, 1114112, 8, 11, 131072, 6, 10, 65536, 9, 9, 0, 9, 8, 65536, 2, 7, 65536, 2, 6, 65536, 6, 5, 65536, 2, 4, 65536, 2, 3, 65536, 2, 2, 65536, 2, 1, 65536, 2, 0, 0, 6, 524290, 1179648, 9, 524289, 1179648, 9, 524291, 1179648, 9, 524292, 1179648, 9, 524293, 1179648, 9, 524294, 1179648, 9, 524295, 1179648, 9, 524296, 1179648, 9, 524297, 1179648, 9, 524298, 1179648, 9, 524299, 1245184, 9, 524288, 1114112, 9, 65546, 327680, 1, 262151, 327680, 1, 262150, 327680, 1, 262149, 786432, 11, 196613, 327680, 1, 196614, 327680, 1)
+layer_1/name = "Top"
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_6nt7g")
+initialCharPos = Vector2i(3, 3)
+nextLevel = "Level1"
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes"]
+
+[node name="Character" parent="." instance=ExtResource("3_gfijp")]
+scale = Vector2(0.166269, 0.166269)
+
+[node name="Goal" type="Panel" parent="."]
+offset_left = 3.0
+offset_top = 128.0
+offset_right = 132.0
+offset_bottom = 145.0
+scale = Vector2(0.62097, 0.62097)
+script = ExtResource("4_ygrlc")
+
+[node name="CheckGoal" type="RichTextLabel" parent="Goal"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_4qlwl")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "VERIFICA MISIUNEA"
+
+[node name="GoalDescription" type="Panel" parent="Goal"]
+visible = false
+layout_mode = 0
+offset_left = 0.322357
+offset_top = -118.842
+offset_right = 129.322
+offset_bottom = 1.15759
+
+[node name="GoalDescriptionText" type="RichTextLabel" parent="Goal/GoalDescription"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_au5so")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][color= green]Prima misiune este simpla. [/color][/center]
+[font_size= 14]	Ajungi la usa."
+
+[connection signal="mouse_entered" from="Goal" to="Goal" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Goal" to="Goal" method="_on_mouse_exited"]

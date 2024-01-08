@@ -10,15 +10,49 @@ extends TileMap
 @onready var runButton = $"../../GUI/RunButton"
 @onready var errorPanel = $"../../GUI/ErrorPanel"
 @onready var arrow = $"../../GUI/Arrow"
+@onready var mainNode = $"../.."
 var tween
 var errorIndex = -1
 var ghostCode
+var completed = false
+
+func run_button_pressed():
+	print("clicked")
+	if Global.state == "coding":
+		teleport_char(initialCharPos)
+		robot.rotation_degrees = initialCharRot
+		Global.state = "running"
+		runButton.text = "RUNNING"
+		Global.reset_repeat_times.emit(0)
+		await run_code()
+		print("done running")
+		if Global.state == "running":
+			Global.state = "awaitingRestart"
+			runButton.text = "RESTART"
+	elif Global.state == "awaitingRestart":
+		Global.reset_repeat_times.emit(0)
+		Global.state = "coding"
+		runButton.text = "RUN CODE"
+		teleport_char(initialCharPos)
+		robot.rotation_degrees = initialCharRot
+	elif Global.state == "running":
+		tween.kill()
+		Global.state = "coding"
+		runButton.text = "RUN CODE"
+		teleport_char(initialCharPos)
+		robot.rotation_degrees = initialCharRot
+
+func next_level():
+	mainNode.change_level(nextLevel)
 
 func check_win_condition():
 	match name:
 		"Level0":
 			if local_to_map(robot.position) == Vector2i(9, 1) or local_to_map(robot.position) == Vector2i(10, 1):
-				print("WIN")
+				if completed == false: 
+					completed = true
+					Global.state = "win"
+					#next_level()
 			else:
 				pass
 
@@ -111,7 +145,7 @@ func check_code_for_errors():
 					break
 	if error == true:
 		Global.state = "error"
-	else:
+	elif Global.state != "win":
 		Global.state = "coding"
 		errorIndex = -1
 
@@ -132,7 +166,7 @@ func run_code():
 			print("BROKE")
 			break
 		var codeBlock = commands.get_child(i)
-		if codeBlock.commandName != "Droppable":
+		if codeBlock.commandName != "Droppable" and Global.state != "win":
 			match codeBlock.commandName:
 				"MoveForward":
 					move_char("forward", 1)
@@ -153,10 +187,14 @@ func run_code():
 			tween.tween_property(arrow, "global_position", Vector2(arrow.global_position.x, codeBlock.global_position.y+9), 0.1)
 			await get_tree().create_timer(Global.ticktime).timeout
 			i+=1
+		elif Global.state == "win":
+			break
 
 func _ready():
+	Global.run_button_pressed.connect(run_button_pressed.bind())
 	teleport_char(initialCharPos)
 	robot.rotation_degrees = initialCharRot
+	Global.reload_code_picker.emit()
 	
 
 
@@ -185,26 +223,27 @@ func _process(delta):
 
 
 
-func _on_run_button_pressed():
-	if Global.state == "coding":
-		teleport_char(initialCharPos)
-		Global.state = "running"
-		runButton.text = "RUNNING"
-		Global.reset_repeat_times.emit(0)
-		await run_code()
-		print("done running")
-		if Global.state == "running":
-			Global.state = "awaitingRestart"
-			runButton.text = "RESTART"
-	elif Global.state == "awaitingRestart":
-		Global.reset_repeat_times.emit(0)
-		Global.state = "coding"
-		runButton.text = "RUN CODE"
-		teleport_char(initialCharPos)
-		robot.rotation_degrees = initialCharRot
-	elif Global.state == "running":
-		tween.kill()
-		Global.state = "coding"
-		runButton.text = "RUN CODE"
-		teleport_char(initialCharPos)
-		robot.rotation_degrees = initialCharRot
+#func _on_run_button_pressed():
+	#print("clicked")
+	#if Global.state == "coding":
+		#teleport_char(initialCharPos)
+		#Global.state = "running"
+		#runButton.text = "RUNNING"
+		#Global.reset_repeat_times.emit(0)
+		#await run_code()
+		#print("done running")
+		#if Global.state == "running":
+			#Global.state = "awaitingRestart"
+			#runButton.text = "RESTART"
+	#elif Global.state == "awaitingRestart":
+		#Global.reset_repeat_times.emit(0)
+		#Global.state = "coding"
+		#runButton.text = "RUN CODE"
+		#teleport_char(initialCharPos)
+		#robot.rotation_degrees = initialCharRot
+	#elif Global.state == "running":
+		#tween.kill()
+		#Global.state = "coding"
+		#runButton.text = "RUN CODE"
+		#teleport_char(initialCharPos)
+		#robot.rotation_degrees = initialCharRot

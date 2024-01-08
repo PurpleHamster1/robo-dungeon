@@ -1,19 +1,15 @@
 [gd_scene load_steps=21 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
-[ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_w7rb4"]
-[ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_lida7"]
-[ext_resource type="PackedScene" uid="uid://dibxa3w5slc3" path="res://scenes/character.tscn" id="4_kngvy"]
-[ext_resource type="Script" path="res://scenes/GoalMouseDetection.gd" id="5_4u0go"]
+[ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
 [ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="5_rmmfj"]
 [ext_resource type="PackedScene" uid="uid://cbhwunh0kj2ac" path="res://commandBlocks/rotate_right.tscn" id="6_iwd40"]
-[ext_resource type="Script" path="res://commandBlocks/ghost_code.gd" id="6_p1g7e"]
-[ext_resource type="FontFile" uid="uid://c5qlnarmp075p" path="res://assets/fonts/rainyhearts.ttf" id="6_w03t7"]
 [ext_resource type="PackedScene" uid="uid://bhb203ih5nh1a" path="res://commandBlocks/rotate_left.tscn" id="7_5j4hy"]
 [ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="7_qt7pa"]
 [ext_resource type="PackedScene" uid="uid://cqn3lgd5dc7qv" path="res://commandBlocks/ghost_code.tscn" id="7_y1o0r"]
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="8_kwj4s"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
+[ext_resource type="Script" path="res://scenes/WinPanel.gd" id="10_sv06f"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 [ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 
@@ -29,70 +25,22 @@ bg_color = Color(0.486275, 0.670588, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sucy6"]
 size = Vector2(826, 730)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h24x4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo2r5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjclc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5rhp"]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_88fyu")
 
 [node name="Level" type="Node2D" parent="."]
 
-[node name="Level0" type="TileMap" parent="Level"]
-scale = Vector2(4.99972, 4.99972)
-tile_set = ExtResource("1_w7rb4")
-format = 2
-layer_0/name = "Base"
-layer_0/tile_data = PackedInt32Array(65537, 327680, 1, 65538, 327680, 1, 65539, 327680, 1, 65540, 327680, 1, 65541, 327680, 1, 65542, 327680, 1, 65543, 327680, 1, 65544, 327680, 1, 65545, 327680, 1, 131082, 327680, 1, 196618, 983040, 11, 131081, 983040, 11, 131080, 327680, 1, 131079, 327680, 1, 131078, 327680, 1, 131077, 786432, 11, 131076, 327680, 1, 131075, 327680, 1, 131074, 327680, 1, 196610, 983040, 11, 196609, 327680, 1, 131073, 327680, 1, 196611, 327680, 1, 196612, 327680, 1, 196615, 327680, 1, 196616, 327680, 1, 196617, 327680, 1, 262145, 327680, 1, 327681, 327680, 1, 393217, 786432, 11, 393218, 327680, 1, 393219, 327680, 1, 393220, 327680, 1, 393221, 327680, 1, 327686, 327680, 1, 327687, 327680, 1, 327688, 327680, 1, 327689, 327680, 1, 327690, 327680, 1, 262154, 983040, 11, 262153, 327680, 1, 262152, 327680, 1, 262148, 327680, 1, 262147, 983040, 11, 262146, 327680, 1, 327682, 327680, 1, 327683, 983040, 11, 327684, 327680, 1, 327685, 327680, 1, 393222, 327680, 1, 393223, 327680, 1, 393224, 786432, 11, 393225, 327680, 1, 393226, 327680, 1, 65547, 1245184, 8, 131083, 1245184, 8, 196619, 1245184, 8, 262155, 1245184, 8, 327691, 1245184, 8, 393227, 1245184, 8, 458762, 327680, 1, 458761, 327680, 1, 458760, 327680, 1, 458759, 327680, 1, 458758, 327680, 1, 458757, 327680, 1, 458756, 327680, 1, 458755, 327680, 1, 458754, 327680, 1, 458753, 786432, 11, 393216, 1114112, 8, 327680, 1114112, 8, 262144, 1114112, 8, 196608, 1114112, 8, 131072, 1114112, 8, 65536, 1114112, 8, 458763, 1245184, 8, 458752, 1114112, 8, 11, 131072, 6, 10, 65536, 9, 9, 0, 9, 8, 65536, 2, 7, 65536, 2, 6, 65536, 6, 5, 65536, 2, 4, 65536, 2, 3, 65536, 2, 2, 65536, 2, 1, 65536, 2, 0, 0, 6, 524290, 1179648, 9, 524289, 1179648, 9, 524291, 1179648, 9, 524292, 1179648, 9, 524293, 1179648, 9, 524294, 1179648, 9, 524295, 1179648, 9, 524296, 1179648, 9, 524297, 1179648, 9, 524298, 1179648, 9, 524299, 1245184, 9, 524288, 1114112, 9, 65546, 327680, 1, 262151, 327680, 1, 262150, 327680, 1, 262149, 786432, 11, 196613, 327680, 1, 196614, 327680, 1)
-layer_1/name = "Top"
-layer_1/tile_data = PackedInt32Array()
-script = ExtResource("2_lida7")
-initialCharPos = Vector2i(3, 3)
-nextLevel = "Level1"
-commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes"]
-
-[node name="Character" parent="Level/Level0" instance=ExtResource("4_kngvy")]
-scale = Vector2(0.166269, 0.166269)
-
-[node name="Goal" type="Panel" parent="Level/Level0"]
-offset_left = 3.0
-offset_top = 128.0
-offset_right = 132.0
-offset_bottom = 145.0
-scale = Vector2(0.62097, 0.62097)
-script = ExtResource("5_4u0go")
-
-[node name="CheckGoal" type="RichTextLabel" parent="Level/Level0/Goal"]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("6_w03t7")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "VERIFICA MISIUNEA"
-
-[node name="GoalDescription" type="Panel" parent="Level/Level0/Goal"]
-visible = false
-layout_mode = 0
-offset_left = 0.322357
-offset_top = -118.842
-offset_right = 129.322
-offset_bottom = 1.15759
-
-[node name="GoalDescriptionText" type="RichTextLabel" parent="Level/Level0/Goal/GoalDescription"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("7_qt7pa")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center][color= green]Prima misiune este simpla. [/color][/center]
-[font_size= 14]	Ajungi la usa."
+[node name="Level0" parent="Level" instance=ExtResource("2_1x5lo")]
+initialCharPos = Vector2i(8, 1)
+initialCharRot = 90
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -109,7 +57,6 @@ offset_left = 960.0
 offset_top = 240.0
 offset_right = 1280.0
 offset_bottom = 260.0
-script = ExtResource("6_p1g7e")
 
 [node name="Background" type="Panel" parent="GUI"]
 offset_left = 960.0
@@ -216,11 +163,66 @@ text = "
 evidentiat in rosu. 
  Cel mai probabil blocul de cod \"Repeta\" nu are un bloc de cod \"Inapoi\" care sa il inchida."
 
+[node name="WinPanel" type="Panel" parent="GUI"]
+offset_left = 40.0
+offset_top = 200.0
+offset_right = 944.0
+offset_bottom = 488.0
+script = ExtResource("10_sv06f")
+
+[node name="Congrats" type="RichTextLabel" parent="GUI/WinPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("7_qt7pa")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center] Felicitari!"
+
+[node name="Text" type="RichTextLabel" parent="GUI/WinPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 88.0
+offset_bottom = 192.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("7_qt7pa")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center] TEXT TEXT"
+
+[node name="NextLevel" type="Button" parent="GUI/WinPanel"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 176.0
+offset_right = 900.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("7_qt7pa")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h24x4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jo2r5")
+text = "Nivelul 
+Urmator"
+
+[node name="Replay" type="Button" parent="GUI/WinPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 196.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("7_qt7pa")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sjclc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v5rhp")
+text = "Reset"
+
 [node name="Arrow" type="Sprite2D" parent="GUI"]
 position = Vector2(944, 8)
 scale = Vector2(0.109375, 0.109375)
 texture = ExtResource("16_4o0c0")
 
-[connection signal="mouse_entered" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Level/Level0/Goal" to="Level/Level0/Goal" method="_on_mouse_exited"]
-[connection signal="pressed" from="GUI/RunButton" to="Level/Level0" method="_on_run_button_pressed"]
+[connection signal="child_entered_tree" from="Level" to="GUI/Background/VSplitContainer/Code/CodePicker" method="_on_level_child_entered_tree"]
+[connection signal="pressed" from="GUI/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="GUI/WinPanel/NextLevel" to="." method="_on_next_level_pressed"]

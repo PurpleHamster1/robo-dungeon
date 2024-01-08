@@ -3,6 +3,8 @@ extends VBoxContainer
 
 @onready var Level = $"../../../../../Level"
 
+var stupidOldLevelFUCK
+
 var codeTypes = {
 	"MoveForward": preload("res://commandBlocks/move_foreward.tscn"),
 	"TurnLeft": preload("res://commandBlocks/rotate_left.tscn"),
@@ -14,6 +16,7 @@ var codeList = [preload("res://commandBlocks/move_foreward.tscn"), preload("res:
 var debounce = false
 
 func load_code():
+	print("Loaded")
 	for c in self.get_children():
 			c.ghostCode.queue_free()
 			c.queue_free()
@@ -23,8 +26,17 @@ func load_code():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_code()
+	Global.reload_code_picker.connect(load_code.bind())
+	stupidOldLevelFUCK = Level.get_child(0).name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if stupidOldLevelFUCK != Level.get_child(0).name:
+		load_code()
+	stupidOldLevelFUCK = Level.get_child(0).name
+
+
+#func _on_level_child_entered_tree(node):
+	#await node
+	#load_code()
