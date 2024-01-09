@@ -69,6 +69,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3tq1l")
 [node name="TopNinePatch" type="NinePatchRect" parent="GUI/Background"]
 top_level = true
 z_index = 2
+layout_mode = 0
 offset_left = 960.0
 offset_top = 512.0
 offset_right = 1010.0
@@ -86,6 +87,7 @@ axis_stretch_vertical = 1
 [node name="BottomNinePatch" type="NinePatchRect" parent="GUI/Background"]
 top_level = true
 z_index = 2
+layout_mode = 0
 offset_left = 960.0
 offset_right = 1010.0
 offset_bottom = 80.0
