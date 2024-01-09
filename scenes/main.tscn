@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=23 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
+[ext_resource type="Texture2D" uid="uid://cusutbfuoduni" path="res://assets/Frame.png" id="5_036ah"]
 [ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="5_rmmfj"]
 [ext_resource type="PackedScene" uid="uid://cbhwunh0kj2ac" path="res://commandBlocks/rotate_right.tscn" id="6_iwd40"]
 [ext_resource type="PackedScene" uid="uid://bhb203ih5nh1a" path="res://commandBlocks/rotate_left.tscn" id="7_5j4hy"]
@@ -18,10 +19,10 @@
 bg_color = Color(0.34902, 0.368627, 0.52549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4b2b"]
-bg_color = Color(0.909804, 0.384314, 0.643137, 1)
+bg_color = Color(0.917647, 0.415686, 0.658824, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcba2"]
-bg_color = Color(0.486275, 0.670588, 0, 1)
+bg_color = Color(0.486275, 0.670588, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sucy6"]
 size = Vector2(826, 730)
@@ -65,14 +66,54 @@ offset_right = 1280.0
 offset_bottom = 720.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3tq1l")
 
+[node name="TopNinePatch" type="NinePatchRect" parent="GUI/Background"]
+top_level = true
+z_index = 2
+offset_left = 960.0
+offset_top = 512.0
+offset_right = 1010.0
+offset_bottom = 545.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("5_036ah")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BottomNinePatch" type="NinePatchRect" parent="GUI/Background"]
+top_level = true
+z_index = 2
+offset_left = 960.0
+offset_right = 1010.0
+offset_bottom = 80.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("5_036ah")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="VSplitContainer" type="VSplitContainer" parent="GUI/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 24.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 500
+mouse_filter = 2
+theme_override_constants/separation = 42
+split_offset = 461
+dragger_visibility = 1
 
 [node name="Lines" type="ScrollContainer" parent="GUI/Background/VSplitContainer"]
 layout_mode = 2
@@ -222,7 +263,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_v5rhp")
 text = "Reset"
 
 [node name="Arrow" type="Sprite2D" parent="GUI"]
-position = Vector2(944, 8)
+z_index = 5
+z_as_relative = false
+position = Vector2(944, 42)
 scale = Vector2(0.109375, 0.109375)
 texture = ExtResource("16_4o0c0")
 
