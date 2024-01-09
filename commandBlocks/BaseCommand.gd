@@ -72,7 +72,7 @@ func _process(delta):
 			if ghostCode.get_parent() != codingArea:
 				ghostCode.reparent(codingArea, true)
 			if frameDebounce == 0:
-				frameDebounce = 3
+				frameDebounce = 5
 				dropZone = get_closest_drop()
 				if dropZone != null:
 					#print(dropZone.name)
