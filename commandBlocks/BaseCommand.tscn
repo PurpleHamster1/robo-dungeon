@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbsa6nosfft2q"]
+[gd_scene load_steps=7 format=3 uid="uid://bbsa6nosfft2q"]
 
 [ext_resource type="Script" path="res://commandBlocks/BaseCommand.gd" id="1_6ahbc"]
+[ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_il0tu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhl3p"]
 
@@ -36,6 +37,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_il0tu")
+theme_override_font_sizes/font_size = 21
 text = "Do Something"
 
 [node name="Area2D" type="Area2D" parent="Background"]

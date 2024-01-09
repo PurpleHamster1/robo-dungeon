@@ -71,7 +71,7 @@ func indent_lines():
 	if get_parent().name == "VBoxContainer" and repeatStart.get_parent().name == "VBoxContainer":
 		indentLine.visible = true
 		var indexDiff = get_index() - repeatStart.get_index()
-		indentLine.size.y = 20 + (35 * indexDiff)
+		indentLine.size.y = 20 + (38 * indexDiff)
 		#if scale.x != 1:
 			#indentLine.scale = Vector2(1, 1/1.09)
 	else:
