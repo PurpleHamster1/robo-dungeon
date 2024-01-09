@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2w0qow7ap61b"]
+[gd_scene load_steps=5 format=3 uid="uid://b2w0qow7ap61b"]
 
 [ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_7etf6"]
 [ext_resource type="Script" path="res://commandBlocks/RepeatDropDown.gd" id="2_miqxa"]
 [ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_nyyix"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61re8"]
+bg_color = Color(1, 0.709804, 0, 1)
+corner_radius_top_right = 25
+corner_detail = 1
+
 [node name="repeat_times" instance=ExtResource("1_7etf6")]
 commandName = "RepeatTimes"
 
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_61re8")
+
 [node name="Text" parent="Background" index="0"]
-theme_override_font_sizes/font_size = 19
+offset_left = 0.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = 2.0
+theme_override_font_sizes/font_size = 17
 text = "Repeta de      ori"
 
 [node name="RepeatDropDown" type="OptionButton" parent="Background" index="4"]
@@ -17,9 +29,9 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 4.0
+offset_left = -9.0
 offset_top = -1.0
-offset_right = 61.0
+offset_right = 48.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2

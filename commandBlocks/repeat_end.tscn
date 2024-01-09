@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxog7jilarogj"]
+[gd_scene load_steps=5 format=3 uid="uid://dxog7jilarogj"]
 
 [ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_lkxkk"]
 [ext_resource type="Script" path="res://commandBlocks/repeat_end.gd" id="2_i3y5c"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvast"]
+bg_color = Color(1, 0.709804, 0, 1)
+corner_radius_bottom_right = 20
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhs54"]
+bg_color = Color(1, 0.709804, 0, 1)
 
 [node name="RepeatEnd" instance=ExtResource("1_lkxkk")]
 script = ExtResource("2_i3y5c")
 commandName = "RepeatEnd"
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvast")
 
 [node name="IndentLines" type="Control" parent="Background" index="0"]
 layout_mode = 2

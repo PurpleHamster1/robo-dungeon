@@ -175,6 +175,9 @@ func run_code():
 			break
 		var codeBlock = commands.get_child(i)
 		if codeBlock.commandName != "Droppable" and Global.state != "win":
+			#set block color
+			codeBlock.get_node("Background").modulate.r = 0
+			
 			match codeBlock.commandName:
 				"MoveForward":
 					move_char("forward", 1)
@@ -194,6 +197,7 @@ func run_code():
 			tween = get_tree().create_tween()
 			tween.tween_property(arrow, "global_position", Vector2(arrow.global_position.x, codeBlock.global_position.y+9), 0.1)
 			await get_tree().create_timer(Global.ticktime).timeout
+			codeBlock.get_node("Background").modulate.r = 1
 			i+=1
 		elif Global.state == "win":
 			break

@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_ymptu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlvr0"]
-bg_color = Color(0.341176, 0.807843, 0.945098, 1)
+bg_color = Color(1, 0.709804, 0, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_detail = 1
 
 [node name="RotateRight" instance=ExtResource("1_ymptu")]
 commandName = "RotateRight"
@@ -12,4 +15,4 @@ commandName = "RotateRight"
 theme_override_styles/panel = SubResource("StyleBoxFlat_wlvr0")
 
 [node name="Text" parent="Background" index="0"]
-text = "Rotate Right"
+text = "Roteste Dreapta"
