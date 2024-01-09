@@ -23,7 +23,7 @@ func run_button_pressed():
 		robot.rotation_degrees = initialCharRot
 		Global.state = "running"
 		runButton.text = "RUNNING"
-		Global.reset_repeat_times.emit(0)
+		Global.reset_repeat_times.emit(-1)
 		await run_code()
 		print("done running")
 		if Global.state == "running":
@@ -55,6 +55,11 @@ func check_win_condition():
 					#next_level()
 		"Level1":
 			if local_to_map(robot.position) == Vector2i(7, 0) or local_to_map(robot.position) == Vector2i(8, 0):
+				if completed == false: 
+					completed = true
+					Global.state = "win"
+		"Level2":
+			if local_to_map(robot.position) == Vector2i(0, 2) or local_to_map(robot.position) == Vector2i(0, 3):
 				if completed == false: 
 					completed = true
 					Global.state = "win"

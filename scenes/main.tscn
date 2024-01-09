@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=22 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="8_kwj4s"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
 [ext_resource type="Script" path="res://scenes/WinPanel.gd" id="10_sv06f"]
+[ext_resource type="Script" path="res://scenes/GameSpeed.gd" id="13_cpefg"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 [ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 
@@ -140,6 +141,7 @@ position = Vector2(403, 355)
 shape = SubResource("RectangleShape2D_sucy6")
 
 [node name="ErrorPanel" type="Panel" parent="GUI"]
+visible = false
 offset_left = 496.0
 offset_top = 144.0
 offset_right = 960.0
@@ -164,6 +166,7 @@ evidentiat in rosu.
  Cel mai probabil blocul de cod \"Repeta\" nu are un bloc de cod \"Inapoi\" care sa il inchida."
 
 [node name="WinPanel" type="Panel" parent="GUI"]
+visible = false
 offset_left = 40.0
 offset_top = 200.0
 offset_right = 944.0
@@ -223,6 +226,49 @@ position = Vector2(944, 8)
 scale = Vector2(0.109375, 0.109375)
 texture = ExtResource("16_4o0c0")
 
+[node name="GameSpeed" type="Panel" parent="."]
+offset_left = 664.0
+offset_top = 568.0
+offset_right = 800.0
+offset_bottom = 704.0
+script = ExtResource("13_cpefg")
+
+[node name="Slider" type="HSlider" parent="GameSpeed"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 128.0
+focus_mode = 0
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+exp_edit = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Title" type="Label" parent="GameSpeed"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("15_k210x")
+theme_override_font_sizes/font_size = 13
+text = "Game Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameSpeed" type="Label" parent="GameSpeed"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("15_k210x")
+theme_override_font_sizes/font_size = 22
+text = "10 x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="child_entered_tree" from="Level" to="GUI/Background/VSplitContainer/Code/CodePicker" method="_on_level_child_entered_tree"]
 [connection signal="pressed" from="GUI/RunButton" to="." method="_on_run_button_pressed"]
 [connection signal="pressed" from="GUI/WinPanel/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="drag_ended" from="GameSpeed/Slider" to="GameSpeed" method="_on_slider_drag_ended"]
