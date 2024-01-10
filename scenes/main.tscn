@@ -529,7 +529,6 @@ texture_hover = ExtResource("21_fa5tx")
 stretch_mode = 0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("21_buxsr")
 
 [node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]
