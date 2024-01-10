@@ -158,6 +158,7 @@ func check_repeat_end_difference_above(index):
 
 func check_code_for_errors():
 	#check repeat errors
+	print("checking")
 	var error = false
 	for code in commands.get_children():
 		if code.is_in_group("Command"):
@@ -172,8 +173,8 @@ func check_code_for_errors():
 					break
 	if error == true:
 		Global.state = "error"
-	elif Global.state != "win":
-		#Global.state = "coding"
+	elif Global.state != "win" and Global.state != "awaitingRestart":
+		Global.state = "coding"
 		errorIndex = -1
 
 func set_indent():
