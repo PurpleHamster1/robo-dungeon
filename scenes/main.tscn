@@ -491,6 +491,7 @@ text = "Textura CRT"
 [node name="CRTFilter2" type="ColorRect" parent="GUI/Settings"]
 z_index = 1
 material = SubResource("ShaderMaterial_2s7jx")
+layout_mode = 0
 offset_left = 8.0
 offset_top = 10.0
 offset_right = 912.0
@@ -501,6 +502,7 @@ script = ExtResource("11_b37ah")
 [node name="NinePatch" type="NinePatchRect" parent="GUI/Settings"]
 top_level = true
 z_index = 5
+layout_mode = 0
 offset_left = 16.0
 offset_top = 98.0
 offset_right = 161.0
@@ -527,6 +529,7 @@ texture_hover = ExtResource("21_fa5tx")
 stretch_mode = 0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("21_buxsr")
 
 [node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]
