@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=35 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -12,10 +12,14 @@
 [ext_resource type="Shader" path="res://scenes/CRT.gdshader" id="9_0fktg"]
 [ext_resource type="Script" path="res://scenes/CodePicker.gd" id="9_8h2ai"]
 [ext_resource type="Script" path="res://scenes/WinPanel.gd" id="10_sv06f"]
+[ext_resource type="Script" path="res://scenes/CRTFilter.gd" id="11_b37ah"]
 [ext_resource type="Script" path="res://scenes/GameSpeed.gd" id="13_cpefg"]
 [ext_resource type="Script" path="res://scenes/RunButton.gd" id="13_ohqwf"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 [ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
+[ext_resource type="Script" path="res://scenes/Settings.gd" id="17_3il0j"]
+[ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="17_rud7c"]
+[ext_resource type="Texture2D" uid="uid://gy0031xnew1m" path="res://assets/cog.png" id="18_30c18"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.243137, 0.156863, 0, 1)
@@ -44,6 +48,17 @@ size = Vector2(826, 730)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjclc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5rhp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw5dc"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00llb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4iek"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv87m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxyg5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_88fyu")
@@ -176,6 +191,7 @@ offset_top = 16.0
 offset_right = 1264.0
 offset_bottom = 704.0
 mouse_filter = 2
+script = ExtResource("11_b37ah")
 
 [node name="RunButton" type="Button" parent="GUI"]
 offset_left = 808.0
@@ -331,8 +347,159 @@ text = "10 x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" type="Panel" parent="GUI"]
+offset_left = 16.0
+offset_top = 98.0
+offset_right = 944.0
+offset_bottom = 552.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vw5dc")
+script = ExtResource("17_3il0j")
+
+[node name="Titlu" type="Label" parent="GUI/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_rud7c")
+theme_override_font_sizes/font_size = 42
+text = "Setari"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="GridContainer" parent="GUI/Settings"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 86.0
+offset_right = 741.0
+offset_bottom = 454.0
+theme_override_constants/h_separation = 500
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="CRT" type="Panel" parent="GUI/Settings/Options"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/Options/CRT"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -7.0
+offset_right = 203.0
+offset_bottom = 17.0
+scale = Vector2(1.66523, 1.66523)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_00llb")
+button_pressed = true
+
+[node name="Label" type="Label" parent="GUI/Settings/Options/CRT"]
+layout_mode = 0
+offset_right = 99.0
+offset_bottom = 23.0
+scale = Vector2(1.6047, 1.6047)
+theme_override_fonts/font = ExtResource("17_rud7c")
+text = "Textura CRT"
+
+[node name="CRT2" type="Panel" parent="GUI/Settings/Options"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/Options/CRT2"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -7.0
+offset_right = 203.0
+offset_bottom = 17.0
+scale = Vector2(1.66523, 1.66523)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4iek")
+
+[node name="Label" type="Label" parent="GUI/Settings/Options/CRT2"]
+layout_mode = 0
+offset_right = 99.0
+offset_bottom = 23.0
+scale = Vector2(1.6047, 1.6047)
+theme_override_fonts/font = ExtResource("17_rud7c")
+text = "Textura CRT"
+
+[node name="CRT3" type="Panel" parent="GUI/Settings/Options"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/Options/CRT3"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -7.0
+offset_right = 203.0
+offset_bottom = 17.0
+scale = Vector2(1.66523, 1.66523)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vv87m")
+
+[node name="Label" type="Label" parent="GUI/Settings/Options/CRT3"]
+layout_mode = 0
+offset_right = 99.0
+offset_bottom = 23.0
+scale = Vector2(1.6047, 1.6047)
+theme_override_fonts/font = ExtResource("17_rud7c")
+text = "Textura CRT"
+
+[node name="CRT4" type="Panel" parent="GUI/Settings/Options"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/Options/CRT4"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -7.0
+offset_right = 203.0
+offset_bottom = 17.0
+scale = Vector2(1.66523, 1.66523)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxyg5")
+
+[node name="Label" type="Label" parent="GUI/Settings/Options/CRT4"]
+layout_mode = 0
+offset_right = 99.0
+offset_bottom = 23.0
+scale = Vector2(1.6047, 1.6047)
+theme_override_fonts/font = ExtResource("17_rud7c")
+text = "Textura CRT"
+
+[node name="CRTFilter2" type="ColorRect" parent="GUI/Settings"]
+z_index = 1
+material = SubResource("ShaderMaterial_2s7jx")
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 912.0
+offset_bottom = 445.0
+mouse_filter = 2
+script = ExtResource("11_b37ah")
+
+[node name="NinePatch" type="NinePatchRect" parent="GUI/Settings"]
+top_level = true
+z_index = 5
+offset_left = 16.0
+offset_top = 98.0
+offset_right = 161.0
+offset_bottom = 169.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("5_036ah")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SettingsButton" type="TextureButton" parent="GUI"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 2064.0
+offset_bottom = 2064.0
+scale = Vector2(0.0400169, 0.0400169)
+toggle_mode = true
+texture_normal = ExtResource("18_30c18")
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
 [connection signal="child_entered_tree" from="Level" to="GUI/Background/VSplitContainer/Code/CodePicker" method="_on_level_child_entered_tree"]
 [connection signal="pressed" from="GUI/RunButton" to="." method="_on_run_button_pressed"]
 [connection signal="pressed" from="GUI/RunButton" to="GUI/RunButton" method="_on_pressed"]
 [connection signal="pressed" from="GUI/WinPanel/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="drag_ended" from="GUI/GameSpeed/Slider" to="GUI/GameSpeed" method="_on_slider_drag_ended"]
+[connection signal="pressed" from="GUI/Settings/Options/CRT/CheckButton" to="GUI/Settings" method="_on_check_button_pressed"]
+[connection signal="pressed" from="GUI/SettingsButton" to="GUI/Settings" method="_on_settings_button_pressed"]
