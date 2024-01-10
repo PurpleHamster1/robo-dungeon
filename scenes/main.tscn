@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=53 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -19,7 +19,22 @@
 [ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 [ext_resource type="Script" path="res://scenes/Settings.gd" id="17_3il0j"]
 [ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="17_rud7c"]
-[ext_resource type="Texture2D" uid="uid://gy0031xnew1m" path="res://assets/cog.png" id="18_30c18"]
+[ext_resource type="Texture2D" uid="uid://cq81ehxa8ket7" path="res://assets/SetCog1.png" id="20_a3gta"]
+[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="21_buxsr"]
+[ext_resource type="Texture2D" uid="uid://c4flboetpcoov" path="res://assets/SetCog2.png" id="21_fa5tx"]
+[ext_resource type="Texture2D" uid="uid://by5do7hqoog8j" path="res://assets/Wallpaper 1.png" id="21_fy2bn"]
+[ext_resource type="Texture2D" uid="uid://bx3e18ojhdy8p" path="res://assets/Wallpaper 2.png" id="22_v6fsg"]
+[ext_resource type="Texture2D" uid="uid://gdomnol8s52q" path="res://assets/Wallpaper 3.png" id="23_d4f4r"]
+[ext_resource type="Texture2D" uid="uid://m6fnnf4rqxen" path="res://assets/Wallpaper 4.png" id="24_6mbud"]
+[ext_resource type="Texture2D" uid="uid://cjapysgpvlw6q" path="res://assets/Wallpaper 5.png" id="25_ogfxj"]
+[ext_resource type="Script" path="res://scenes/LightRays.gd" id="25_yu61g"]
+[ext_resource type="Texture2D" uid="uid://bsff4ljjhiwom" path="res://assets/Wallpaper 6.png" id="26_krrwi"]
+[ext_resource type="Texture2D" uid="uid://c7rm4yagduiks" path="res://assets/Wallpaper 7.png" id="27_13x10"]
+[ext_resource type="Texture2D" uid="uid://x7nrrn1peqih" path="res://assets/Wallpaper 8.png" id="28_mjc6x"]
+[ext_resource type="Texture2D" uid="uid://bmcq5a3kvt31j" path="res://assets/Wallpaper 9.png" id="29_h6ev6"]
+[ext_resource type="Texture2D" uid="uid://djg844f1sdegc" path="res://assets/Wallpaper 10.png" id="30_q2tmt"]
+[ext_resource type="Texture2D" uid="uid://dnfsb4jnml71j" path="res://assets/Wallpaper 11.png" id="31_tdp1d"]
+[ext_resource type="Texture2D" uid="uid://ce5ddigeqy7wc" path="res://assets/Wallpaper 12.png" id="32_cgxpd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.243137, 0.156863, 0, 1)
@@ -59,6 +74,20 @@ bg_color = Color(0.243137, 0.156863, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv87m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxyg5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn813"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nicu"]
+bg_color = Color(0, 0, 0, 0.309804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyojw"]
+bg_color = Color(0, 0, 0, 0.407843)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_blend = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_88fyu")
@@ -348,6 +377,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" type="Panel" parent="GUI"]
+visible = false
 offset_left = 16.0
 offset_top = 98.0
 offset_right = 944.0
@@ -492,9 +522,153 @@ offset_right = 2064.0
 offset_bottom = 2064.0
 scale = Vector2(0.0400169, 0.0400169)
 toggle_mode = true
-texture_normal = ExtResource("18_30c18")
+texture_normal = ExtResource("20_a3gta")
+texture_hover = ExtResource("21_fa5tx")
+stretch_mode = 0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+script = ExtResource("21_buxsr")
+
+[node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wallpaper1" type="Sprite2D" parent="MainMenu/BackgroundArt"]
+texture_filter = 1
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("21_fy2bn")
+
+[node name="Wallpaper2" type="Sprite2D" parent="MainMenu/BackgroundArt"]
+position = Vector2(639.5, 360)
+scale = Vector2(4.00312, 4)
+texture = ExtResource("22_v6fsg")
+
+[node name="Wallpaper3" type="Sprite2D" parent="MainMenu/BackgroundArt"]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("23_d4f4r")
+
+[node name="LightRays" type="Sprite2D" parent="MainMenu/BackgroundArt"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("24_6mbud")
+script = ExtResource("25_yu61g")
+
+[node name="LeftThings" type="Node2D" parent="MainMenu/BackgroundArt"]
+
+[node name="Wallpaper5" type="Sprite2D" parent="MainMenu/BackgroundArt/LeftThings"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("25_ogfxj")
+
+[node name="Wallpaper6" type="Sprite2D" parent="MainMenu/BackgroundArt/LeftThings"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("26_krrwi")
+
+[node name="Wallpaper7" type="Sprite2D" parent="MainMenu/BackgroundArt/LeftThings"]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("27_13x10")
+
+[node name="Wallpaper8" type="Sprite2D" parent="MainMenu/BackgroundArt/LeftThings"]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("28_mjc6x")
+
+[node name="Wallpaper9" type="Sprite2D" parent="MainMenu/BackgroundArt/LeftThings"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("29_h6ev6")
+
+[node name="RightThings" type="Node2D" parent="MainMenu/BackgroundArt"]
+
+[node name="Wallpaper10" type="Sprite2D" parent="MainMenu/BackgroundArt/RightThings"]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("30_q2tmt")
+
+[node name="Wallpaper11" type="Sprite2D" parent="MainMenu/BackgroundArt/RightThings"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("31_tdp1d")
+
+[node name="Wallpaper12" type="Sprite2D" parent="MainMenu/BackgroundArt/RightThings"]
+position = Vector2(640, 361.5)
+scale = Vector2(4, 4.01667)
+texture = ExtResource("32_cgxpd")
+
+[node name="Buttons" type="Panel" parent="MainMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = 480.0
+offset_right = 117.0
+offset_bottom = 668.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qn813")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/Buttons/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rud7c")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_5nicu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qyojw")
+text = "START"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenu/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/Buttons/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rud7c")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_5nicu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qyojw")
+text = "SETARI"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenu/Buttons/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/Buttons/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rud7c")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_5nicu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qyojw")
+text = "START"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainMenu/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/Buttons/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_rud7c")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_5nicu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qyojw")
+text = "IESI"
 
 [connection signal="child_entered_tree" from="Level" to="GUI/Background/VSplitContainer/Code/CodePicker" method="_on_level_child_entered_tree"]
 [connection signal="pressed" from="GUI/RunButton" to="." method="_on_run_button_pressed"]
@@ -503,3 +677,4 @@ texture_normal = ExtResource("18_30c18")
 [connection signal="drag_ended" from="GUI/GameSpeed/Slider" to="GUI/GameSpeed" method="_on_slider_drag_ended"]
 [connection signal="pressed" from="GUI/Settings/Options/CRT/CheckButton" to="GUI/Settings" method="_on_check_button_pressed"]
 [connection signal="pressed" from="GUI/SettingsButton" to="GUI/Settings" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/VBoxContainer/MarginContainer/Button" to="MainMenu" method="_on_button_pressed"]
