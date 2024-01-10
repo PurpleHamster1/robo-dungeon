@@ -124,7 +124,8 @@ func _process(delta):
 func _on_background_mouse_entered():
 	if Global.is_dragging == false and Global.state != "running":
 		draggable = true
-		scale = Vector2(1.1, 1.1)
+		if commandName != "RepeatTimes" or get_parent().name == "CodePicker":
+			scale = Vector2(1.1, 1.1)
 
 func _on_background_mouse_exited():
 	if Global.is_dragging == false:

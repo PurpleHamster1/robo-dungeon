@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://commandBlocks/repeat_end.gd" id="2_i3y5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvast"]
-bg_color = Color(1, 0.709804, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhs54"]
-bg_color = Color(1, 0.709804, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [node name="RepeatEnd" instance=ExtResource("1_lkxkk")]
 script = ExtResource("2_i3y5c")

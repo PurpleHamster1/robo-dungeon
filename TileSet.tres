@@ -534,6 +534,7 @@ texture = ExtResource("1_am4qi")
 11:13/0 = 0
 10:13/0 = 0
 14:13/0 = 0
+14:13/0/custom_data_0 = "hole"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oo4q3"]
 texture = ExtResource("2_p45v1")

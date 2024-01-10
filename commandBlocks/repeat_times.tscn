@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_nyyix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61re8"]
-bg_color = Color(1, 0.709804, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_right = 25
 corner_detail = 1
 

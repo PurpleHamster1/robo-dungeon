@@ -19,8 +19,12 @@ var completed = false
 func run_button_pressed():
 	print("clicked")
 	if Global.state == "coding":
+		if tween != null:
+			tween.kill()
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
+		robot.modulate.a = 1
+		arrow.global_position.y = 42
 		Global.state = "running"
 		runButton.text = "RUNNING"
 		Global.reset_repeat_times.emit(-1)
@@ -30,17 +34,24 @@ func run_button_pressed():
 			Global.state = "awaitingRestart"
 			runButton.text = "RESTART"
 	elif Global.state == "awaitingRestart":
+		if tween != null:
+			tween.kill()
 		Global.reset_repeat_times.emit(0)
 		Global.state = "coding"
 		runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
+		robot.modulate.a = 1
+		arrow.global_position.y = 42
 	elif Global.state == "running":
-		tween.kill()
+		if tween != null:
+			tween.kill()
 		Global.state = "coding"
 		runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
+		robot.modulate.a = 1
+		arrow.global_position.y = 42
 
 func next_level():
 	mainNode.change_level(nextLevel)
@@ -107,6 +118,14 @@ func move_char(direction : String, steps : int):
 		await tween.tween_property(robot, "position", robot.position + (wallPos - robot.position)/2, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).finished
 		tween = get_tree().create_tween()
 		await tween.tween_property(robot, "position", initialPos, 0.5).set_trans(Tween.TRANS_BOUNCE).finished
+	elif tileData.get_custom_data("Type") == "hole":
+		print("falling")
+		tween = get_tree().create_tween()
+		Global.state = "awaitingRestart"
+		await tween.tween_property(robot, "position", self.map_to_local(neighborCell), 0.5).set_trans(Tween.TRANS_CIRC).finished
+		tween = get_tree().create_tween()
+		tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees + 1000, 1)
+		tween.parallel().tween_property(robot, "modulate:a", 0, 1)
 
 func rotate_char(direction : String):
 	match direction:
@@ -154,7 +173,7 @@ func check_code_for_errors():
 	if error == true:
 		Global.state = "error"
 	elif Global.state != "win":
-		Global.state = "coding"
+		#Global.state = "coding"
 		errorIndex = -1
 
 func set_indent():
@@ -174,7 +193,7 @@ func run_code():
 			print("BROKE")
 			break
 		var codeBlock = commands.get_child(i)
-		if codeBlock.commandName != "Droppable" and Global.state != "win":
+		if codeBlock.commandName != "Droppable" and Global.state != "win" and Global.state != "awaitingRestart":
 			#set block color
 			codeBlock.get_node("Background").modulate.r = 0
 			
@@ -201,6 +220,8 @@ func run_code():
 			i+=1
 		elif Global.state == "win":
 			break
+		elif Global.state == "awaitingRestart":
+			break
 
 func _ready():
 	Global.run_button_pressed.connect(run_button_pressed.bind())
@@ -212,6 +233,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.state == "awaitingRestart":
+		runButton.text = "Restart"
 	#check if ghostcode
 	ghostCode = false
 	for code in commands.get_children():
@@ -228,7 +251,7 @@ func _process(delta):
 	if Global.state == "error":
 		runButton.text = "ERROR"
 		errorPanel.visible = true
-	elif Global.state == "coding":
+	if Global.state == "coding":
 		runButton.text = "Run"
 		errorPanel.visible = false
 	#print(Global.state)

@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var goalDescription = $GoalDescription
+@onready var goalMarker = $GoalMarker
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +15,9 @@ func _process(delta):
 
 func _on_mouse_entered():
 	goalDescription.visible = true
+	goalMarker.visible = true
 
 
 func _on_mouse_exited():
 	goalDescription.visible = false
+	goalMarker.visible = false

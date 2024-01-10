@@ -8,3 +8,6 @@ layer_1/tile_data = PackedInt32Array(8, 393216, 12, 7, 327680, 12, 65543, 327680
 initialCharPos = Vector2i(7, 7)
 nextLevel = "Level2"
 commandsAv = ["MoveForward"]
+
+[node name="GoalMarker" parent="Goal" index="0"]
+position = Vector2(201.954, -189.38)
