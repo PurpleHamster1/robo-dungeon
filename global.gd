@@ -11,3 +11,5 @@ var state = "coding"
 var current_drag
 
 var CRT = true
+
+var highestLevel = 1

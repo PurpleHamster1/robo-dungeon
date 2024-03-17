@@ -4,6 +4,7 @@ extends TileMap
 @export var initialCharRot : int
 @export var nextLevel : String
 @export var commandsAv : Array
+@export var currentLevel : int
 
 @onready var robot = $Character
 @onready var commands = $"../../GUI/Background/VSplitContainer/Lines/VBoxContainer"
@@ -158,7 +159,7 @@ func check_repeat_end_difference_above(index):
 
 func check_code_for_errors():
 	#check repeat errors
-	print("checking")
+	#print("checking")
 	var error = false
 	for code in commands.get_children():
 		if code.is_in_group("Command"):
@@ -225,6 +226,8 @@ func run_code():
 			break
 
 func _ready():
+	if Global.highestLevel < currentLevel:
+		Global.highestLevel = currentLevel
 	Global.run_button_pressed.connect(run_button_pressed.bind())
 	teleport_char(initialCharPos)
 	robot.rotation_degrees = initialCharRot

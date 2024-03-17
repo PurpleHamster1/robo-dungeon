@@ -1,6 +1,9 @@
-extends CanvasLayer
+extends Button
 
-@onready var levelSelect = $LevelSelect
+@onready var settings = $".."
+@onready var mainMenu = $"../../../MainMenu"
+@onready var levelSelect = $"../../../MainMenu/LevelSelect"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +15,7 @@ func _process(delta):
 	pass
 
 
-func _on_button_pressed():
+func _on_pressed():
+	settings.visible = false
+	mainMenu.visible = true
 	levelSelect.visible = true
