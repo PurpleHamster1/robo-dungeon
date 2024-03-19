@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0336sy6jd1lc"]
+
+[ext_resource type="Script" path="res://scenes/tutorial_screen.gd" id="1_uhyiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hn524"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="TutorialScreen" type="Panel"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hn524")
+script = ExtResource("1_uhyiy")
