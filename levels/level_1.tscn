@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b120ai0n18x8l"]
+[gd_scene load_steps=7 format=3 uid="uid://b120ai0n18x8l"]
 
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="1_gb16l"]
 [ext_resource type="PackedScene" uid="uid://b0336sy6jd1lc" path="res://scenes/tutorial_screen.tscn" id="2_1845i"]
 [ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="3_8jb8o"]
+[ext_resource type="PackedScene" uid="uid://bp4w447mu05w4" path="res://scenes/PulsatingArrow.tscn" id="4_2fvdv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_151bb"]
 
@@ -20,6 +21,7 @@ currentLevel = 1
 position = Vector2(201.954, -189.38)
 
 [node name="TutorialScreen" parent="." index="2" instance=ExtResource("2_1845i")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,5 +52,207 @@ invata concepte de baza
 ale programarii.
  
 (apasa pentru a contiuna)"
+
+[node name="2" type="Control" parent="TutorialScreen" index="1"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/2" index="0"]
+layout_mode = 0
+offset_left = 88.1783
+offset_top = 179.141
+offset_right = 336.178
+offset_bottom = 219.141
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Acesta este robotul tau!"
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/2" index="1" instance=ExtResource("4_2fvdv")]
+
+[node name="3" type="Control" parent="TutorialScreen" index="2"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/3" index="0"]
+layout_mode = 0
+offset_left = 42.2328
+offset_top = 71.935
+offset_right = 290.233
+offset_bottom = 115.935
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Obiectivul tau este sa
+ajungi aici!"
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/3" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(300.27, 60.7966)
+rotation = -1.57079
+
+[node name="4" type="Control" parent="TutorialScreen" index="3"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/4" index="0"]
+layout_mode = 0
+offset_left = 7.42554
+offset_top = 209.772
+offset_right = 369.426
+offset_bottom = 253.772
+scale = Vector2(0.77779, 0.77779)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Poti sa iti verifici misiunea aici!"
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/4" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(209.772, 276.137)
+rotation = 2.35619
+
+[node name="5" type="Control" parent="TutorialScreen" index="4"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/5" index="0"]
+layout_mode = 0
+offset_left = 196.777
+offset_top = 179.141
+offset_right = 428.777
+offset_bottom = 229.141
+scale = Vector2(0.849395, 0.849395)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Aici sunt blocurile
+ tale de cod."
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/5" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(419.543, 238.546)
+rotation = 0.523598
+
+[node name="6" type="Control" parent="TutorialScreen" index="5"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/6" index="0"]
+layout_mode = 0
+offset_left = 178.677
+offset_top = 25.5253
+offset_right = 410.677
+offset_bottom = 177.525
+scale = Vector2(0.849395, 0.849395)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Le poti trage aici.
+ 
+Acesta este zona
+de programare.
+ 
+Robotul va rula codul 
+cand apesi pe
+butonul \"START\"."
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/6" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(410.725, 99.3167)
+rotation = 0.0
+
+[node name="Arrow-right-1-icon2" parent="TutorialScreen/6" index="2" instance=ExtResource("4_2fvdv")]
+position = Vector2(407.013, 233.441)
+rotation = 1.57079
+
+[node name="7" type="Control" parent="TutorialScreen" index="6"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/7" index="0"]
+layout_mode = 0
+offset_left = 178.677
+offset_top = 25.5253
+offset_right = 410.677
+offset_bottom = 177.525
+scale = Vector2(0.849395, 0.849395)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Ca sa scoti un bloc
+de cod, trebuie sa il
+tragi in afara zonei"
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/7" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(410.725, 99.3167)
+rotation = 0.0
+
+[node name="8" type="Control" parent="TutorialScreen" index="7"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/8" index="0"]
+layout_mode = 0
+offset_left = 178.677
+offset_top = 25.5253
+offset_right = 410.677
+offset_bottom = 177.525
+scale = Vector2(0.849395, 0.849395)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Momentan ai un singur
+bloc de cod.
+ 
+\"Avanseaza\", acesta va
+face robotul sa se 
+deplaseze cu un patrat
+in fata."
+
+[node name="9" type="Control" parent="TutorialScreen" index="8"]
+visible = false
+anchors_preset = 0
+offset_right = 444.0
+offset_bottom = 331.0
+
+[node name="ButtonNext" type="Button" parent="TutorialScreen/9" index="0"]
+layout_mode = 0
+offset_left = 88.1783
+offset_top = 154.544
+offset_right = 336.178
+offset_bottom = 306.544
+scale = Vector2(0.849395, 0.849395)
+theme_override_fonts/font = ExtResource("3_8jb8o")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
+text = "Vei obtine mai multe
+blocuri de cod in viitor.
+ 
+Poti verifica ce face
+fiecare bloc de cod in
+jurnal."
+
+[node name="Arrow-right-1-icon" parent="TutorialScreen/9" index="1" instance=ExtResource("4_2fvdv")]
+position = Vector2(24.133, 221.838)
+rotation = 1.57079
 
 [editable path="TutorialScreen"]

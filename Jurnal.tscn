@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://cavcasflc2hcn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bcve"]
+bg_color = Color(0.92549, 0.145098, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oprqt"]
+bg_color = Color(0.996078, 0.831373, 0.721569, 1)
+
+[node name="Jurnal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 21.0
+offset_right = 640.0
+offset_bottom = -29.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="List"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Panel" type="Panel" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bcve")
+
+[node name="Label" type="Label" parent="List/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "AVANSEAZA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bcve")
+
+[node name="Label" type="Label" parent="List/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "AVANSEAZA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bcve")
+
+[node name="Label" type="Label" parent="List/VBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "AVANSEAZA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bcve")
+
+[node name="Label" type="Label" parent="List/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "AVANSEAZA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oprqt")
+
+[node name="Avanseaza" type="RichTextLabel" parent="Desc"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel1" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oprqt")
