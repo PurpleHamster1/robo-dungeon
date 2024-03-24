@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=75 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -22,11 +22,9 @@
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 [ext_resource type="Script" path="res://scenes/Settings.gd" id="17_3il0j"]
 [ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="17_rud7c"]
-[ext_resource type="Texture2D" uid="uid://cq81ehxa8ket7" path="res://assets/SetCog1.png" id="20_a3gta"]
 [ext_resource type="Texture2D" uid="uid://chj8vat5m7vhk" path="res://assets/icons/arrow.png" id="20_u115b"]
 [ext_resource type="Script" path="res://scenes/ButtonLevelSelect.gd" id="20_y57jb"]
 [ext_resource type="Script" path="res://scenes/MainMenu.gd" id="21_buxsr"]
-[ext_resource type="Texture2D" uid="uid://c4flboetpcoov" path="res://assets/SetCog2.png" id="21_fa5tx"]
 [ext_resource type="Texture2D" uid="uid://by5do7hqoog8j" path="res://assets/Wallpaper 1.png" id="21_fy2bn"]
 [ext_resource type="Texture2D" uid="uid://claokabju56k1" path="res://assets/icons/speed 1.png" id="22_ktgxx"]
 [ext_resource type="Texture2D" uid="uid://bx3e18ojhdy8p" path="res://assets/Wallpaper 2.png" id="22_v6fsg"]
@@ -35,10 +33,15 @@
 [ext_resource type="Texture2D" uid="uid://cjapysgpvlw6q" path="res://assets/Wallpaper 5.png" id="25_ogfxj"]
 [ext_resource type="Script" path="res://scenes/LightRays.gd" id="25_yu61g"]
 [ext_resource type="Texture2D" uid="uid://bsff4ljjhiwom" path="res://assets/Wallpaper 6.png" id="26_krrwi"]
+[ext_resource type="Texture2D" uid="uid://bvw53q125x3di" path="res://assets/icons/cog 1.png" id="26_l12qx"]
 [ext_resource type="Texture2D" uid="uid://c7rm4yagduiks" path="res://assets/Wallpaper 7.png" id="27_13x10"]
+[ext_resource type="Texture2D" uid="uid://dgdey2g2guraw" path="res://assets/icons/cog 2.png" id="27_r3hkr"]
 [ext_resource type="Texture2D" uid="uid://x7nrrn1peqih" path="res://assets/Wallpaper 8.png" id="28_mjc6x"]
+[ext_resource type="Texture2D" uid="uid://6kriatew8s8k" path="res://assets/icons/journal 1.png" id="28_xb1uj"]
+[ext_resource type="Script" path="res://scenes/JurnalButton.gd" id="29_ep2rw"]
 [ext_resource type="Texture2D" uid="uid://bmcq5a3kvt31j" path="res://assets/Wallpaper 9.png" id="29_h6ev6"]
 [ext_resource type="Texture2D" uid="uid://djg844f1sdegc" path="res://assets/Wallpaper 10.png" id="30_q2tmt"]
+[ext_resource type="PackedScene" uid="uid://cavcasflc2hcn" path="res://Jurnal.tscn" id="30_t0yny"]
 [ext_resource type="Texture2D" uid="uid://dnfsb4jnml71j" path="res://assets/Wallpaper 11.png" id="31_tdp1d"]
 [ext_resource type="Texture2D" uid="uid://ce5ddigeqy7wc" path="res://assets/Wallpaper 12.png" id="32_cgxpd"]
 [ext_resource type="PackedScene" uid="uid://da5v4w1caojwr" path="res://scenes/LevelButton.tscn" id="36_rmla6"]
@@ -76,10 +79,10 @@ corner_radius_bottom_left = 90
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2s7jx"]
 shader = ExtResource("9_0fktg")
 shader_parameter/crt_curve = 0.0
-shader_parameter/crt_scan_line_color = 0.364
-shader_parameter/aperture_grille_rate = 1.0
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.618
 shader_parameter/rf_switch_esque_blur = 0.0
-shader_parameter/white_noise_rate = 0.094
+shader_parameter/white_noise_rate = 0.045
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pol8e"]
 bg_color = Color(0, 0, 0, 0.290196)
@@ -287,10 +290,11 @@ mouse_filter = 2
 script = ExtResource("11_b37ah")
 
 [node name="RunButton" type="TextureButton" parent="GUI"]
-offset_left = 808.0
-offset_top = 568.0
-offset_right = 944.0
-offset_bottom = 704.0
+offset_left = 835.546
+offset_top = 587.07
+offset_right = 971.546
+offset_bottom = 723.07
+scale = Vector2(0.789516, 0.789516)
 focus_mode = 0
 texture_normal = ExtResource("14_34jvo")
 texture_pressed = ExtResource("15_dhhgt")
@@ -416,11 +420,11 @@ scale = Vector2(4.68332, 4.68332)
 texture = ExtResource("20_u115b")
 
 [node name="GameSpeed" type="Panel" parent="GUI"]
-offset_left = 663.803
-offset_top = 575.449
-offset_right = 799.803
-offset_bottom = 711.449
-scale = Vector2(0.895361, 0.895361)
+offset_left = 725.509
+offset_top = 591.999
+offset_right = 861.509
+offset_bottom = 727.999
+scale = Vector2(0.706617, 0.706617)
 theme_override_styles/panel = SubResource("StyleBoxFlat_hicf0")
 script = ExtResource("13_cpefg")
 
@@ -634,12 +638,69 @@ offset_right = 2064.0
 offset_bottom = 2064.0
 scale = Vector2(0.0400169, 0.0400169)
 toggle_mode = true
-texture_normal = ExtResource("20_a3gta")
-texture_hover = ExtResource("21_fa5tx")
+texture_normal = ExtResource("26_l12qx")
+texture_pressed = ExtResource("27_r3hkr")
+texture_hover = ExtResource("27_r3hkr")
 stretch_mode = 0
 
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="JurnalButton" type="TextureButton" parent="GUI"]
+offset_left = 131.276
+offset_top = 589.0
+offset_right = 238.276
+offset_bottom = 696.0
+texture_normal = ExtResource("28_xb1uj")
+stretch_mode = 0
+script = ExtResource("29_ep2rw")
+
+[node name="Panel" type="Panel" parent="GUI/JurnalButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pol8e")
+
+[node name="Jurnal" parent="GUI" instance=ExtResource("30_t0yny")]
 visible = false
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="MoveForward" parent="GUI/Jurnal/Desc/Avanseaza" index="1"]
+z_index = 16
+z_as_relative = true
+
+[node name="RotateLeft" parent="GUI/Jurnal/Desc/Roteste" index="1"]
+z_index = 15
+z_as_relative = true
+
+[node name="RotateRight" parent="GUI/Jurnal/Desc/Roteste" index="2"]
+z_index = 15
+z_as_relative = true
+
+[node name="RepeatEnd" parent="GUI/Jurnal/Desc/Repeta" index="1"]
+z_index = 67
+z_as_relative = true
+
+[node name="repeat_times" parent="GUI/Jurnal/Desc/Repeta" index="2"]
+z_index = 12
+z_as_relative = true
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
 script = ExtResource("21_buxsr")
 
 [node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]
@@ -929,6 +990,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="LevelSelect" type="Panel" parent="MainMenu"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1015,5 +1077,10 @@ script = ExtResource("11_b37ah")
 [connection signal="pressed" from="GUI/Settings/Options/CRT/CheckButton" to="GUI/Settings" method="_on_check_button_pressed"]
 [connection signal="pressed" from="GUI/Settings/Button" to="GUI/Settings/Button" method="_on_pressed"]
 [connection signal="pressed" from="GUI/SettingsButton" to="GUI/Settings" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="GUI/JurnalButton" to="GUI/JurnalButton" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/VBoxContainer/MarginContainer/Button" to="MainMenu" method="_on_button_pressed"]
 [connection signal="pressed" from="MainMenu/Settings/Options/CRT/CheckButton" to="MainMenu/Settings" method="_on_check_button_pressed"]
+
+[editable path="GUI/Jurnal"]
+[editable path="GUI/Jurnal/Desc/Repeta/RepeatEnd"]
+[editable path="GUI/Jurnal/Desc/Repeta/repeat_times"]

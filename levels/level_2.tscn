@@ -10,15 +10,11 @@ nextLevel = "Level3"
 commandsAv = ["MoveForward", "TurnLeft", "TurnRight"]
 currentLevel = 2
 
+[node name="Goal" parent="." index="1"]
+offset_left = 4.0
+
 [node name="GoalMarker" parent="Goal" index="0"]
 position = Vector2(8.05261, -131.403)
-
-[node name="CheckGoal" parent="Goal" index="1"]
-offset_top = 2.5883
-offset_bottom = 2.5883
-
-[node name="GoalDescription" parent="Goal" index="2"]
-visible = true
 
 [node name="GoalDescriptionText" parent="Goal/GoalDescription" index="0"]
 text = "[center][color= green]Stanga/Dreapta. [/color][/center]

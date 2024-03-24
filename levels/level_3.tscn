@@ -13,7 +13,7 @@ currentLevel = 3
 [node name="GoalMarker" parent="Goal" index="0"]
 position = Vector2(285.376, -92.1076)
 
-[node name="GoalDescription" parent="Goal" index="2"]
+[node name="GoalDescription" parent="Goal" index="1"]
 offset_top = -118.519
 offset_bottom = 1.48026
 

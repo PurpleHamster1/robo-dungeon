@@ -11,6 +11,7 @@
 bg_color = Color(0.996078, 0.831373, 0.721569, 1)
 
 [node name="Jurnal" type="Control"]
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,12 +22,15 @@ script = ExtResource("1_pdeci")
 
 [node name="List" type="ScrollContainer" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = 21.0
-offset_right = 640.0
-offset_bottom = -29.0
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 0.029
+anchor_right = 0.406
+anchor_bottom = 0.96
+offset_left = 0.360001
+offset_top = 0.119999
+offset_right = 0.319946
+offset_bottom = -0.200012
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="List"]
@@ -70,6 +74,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oprqt")
 
 [node name="Avanseaza" type="Control" parent="Desc"]
 visible = false
+z_index = 14
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -102,6 +107,7 @@ script = null
 
 [node name="Roteste" type="Control" parent="Desc"]
 visible = false
+z_index = 14
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -142,6 +148,7 @@ scale = Vector2(1.51577, 1.51577)
 script = null
 
 [node name="Repeta" type="Control" parent="Desc"]
+z_index = 13
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -171,6 +178,7 @@ offset_top = 133.0
 offset_right = 508.0
 offset_bottom = 153.0
 scale = Vector2(1.63965, 1.63965)
+script = null
 
 [node name="repeat_times" parent="Desc/Repeta" instance=ExtResource("6_2yg1n")]
 layout_mode = 0
@@ -179,6 +187,10 @@ offset_top = 133.0
 offset_right = 183.0
 offset_bottom = 153.0
 scale = Vector2(1.56794, 1.56794)
+script = null
+
+[node name="RepeatDropDown" parent="Desc/Repeta/repeat_times/Background" index="4"]
+script = null
 
 [node name="Panel1" type="Panel" parent="."]
 layout_mode = 1
@@ -191,3 +203,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oprqt")
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1142.0
+offset_top = 584.0
+offset_right = 1272.0
+offset_bottom = 714.0
+theme_override_font_sizes/font_size = 40
+text = "Iesi
+"
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+
+[editable path="Desc/Repeta/RepeatEnd"]
+[editable path="Desc/Repeta/repeat_times"]

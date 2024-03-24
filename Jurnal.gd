@@ -3,6 +3,7 @@ extends Control
 @onready var buttonsContainer = $List/VBoxContainer
 @onready var descContainer = $Desc
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for node in buttonsContainer.get_children():
@@ -17,3 +18,7 @@ func changeDesc(node):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_exit_pressed():
+	visible = false
