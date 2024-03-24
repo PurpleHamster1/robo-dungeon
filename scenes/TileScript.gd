@@ -27,19 +27,20 @@ func run_button_pressed():
 		robot.modulate.a = 1
 		arrow.global_position.y = 42
 		Global.state = "running"
-		runButton.text = "RUNNING"
+		#runButton.text = "RUNNING"
 		Global.reset_repeat_times.emit(-1)
 		await run_code()
 		print("done running")
 		if Global.state == "running":
 			Global.state = "awaitingRestart"
-			runButton.text = "RESTART"
+			runButton.flip_h = true
+			#runButton.text = "RESTART"
 	elif Global.state == "awaitingRestart":
 		if tween != null:
 			tween.kill()
 		Global.reset_repeat_times.emit(0)
 		Global.state = "coding"
-		runButton.text = "RUN CODE"
+		#runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
 		robot.modulate.a = 1
@@ -48,7 +49,7 @@ func run_button_pressed():
 		if tween != null:
 			tween.kill()
 		Global.state = "coding"
-		runButton.text = "RUN CODE"
+		#runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
 		robot.modulate.a = 1
@@ -238,7 +239,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.state == "awaitingRestart":
-		runButton.text = "Restart"
+		#runButton.text = "Restart"
+		runButton.flip_h = true
+		pass
 	#check if ghostcode
 	ghostCode = false
 	for code in commands.get_children():
@@ -253,10 +256,11 @@ func _process(delta):
 			check_code_for_errors()
 		set_indent()
 	if Global.state == "error":
-		runButton.text = "ERROR"
+		#runButton.text = "ERROR"
 		errorPanel.visible = true
 	if Global.state == "coding":
-		runButton.text = "Run"
+		#runButton.text = "Run"
+		runButton.flip_h = false
 		errorPanel.visible = false
 	#print(Global.state)
 

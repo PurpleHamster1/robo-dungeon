@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=69 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dygaqa5qrgkfp" path="res://assets/Trashcan.png" id="11_kqr6n"]
 [ext_resource type="Script" path="res://scenes/GameSpeed.gd" id="13_cpefg"]
 [ext_resource type="Script" path="res://scenes/RunButton.gd" id="13_ohqwf"]
+[ext_resource type="Texture2D" uid="uid://bg6iemy7kha30" path="res://assets/icons/play 1.png" id="14_34jvo"]
+[ext_resource type="Texture2D" uid="uid://drd6u1rs5qjab" path="res://assets/icons/play 2.png" id="15_dhhgt"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
 [ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 [ext_resource type="Script" path="res://scenes/Settings.gd" id="17_3il0j"]
@@ -277,15 +279,17 @@ offset_bottom = 704.0
 mouse_filter = 2
 script = ExtResource("11_b37ah")
 
-[node name="RunButton" type="Button" parent="GUI"]
+[node name="RunButton" type="TextureButton" parent="GUI"]
 offset_left = 808.0
 offset_top = 568.0
 offset_right = 944.0
 offset_bottom = 704.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 23
-text = "START"
-clip_text = true
+texture_normal = ExtResource("14_34jvo")
+texture_pressed = ExtResource("15_dhhgt")
+texture_hover = ExtResource("15_dhhgt")
+texture_disabled = ExtResource("15_dhhgt")
+stretch_mode = 0
 script = ExtResource("13_ohqwf")
 
 [node name="DraggingZone" type="Control" parent="GUI"]
