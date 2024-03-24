@@ -258,4 +258,13 @@ jurnal."
 position = Vector2(24.133, 221.838)
 rotation = 1.57079
 
+[node name="MarkerSpawn1" parent="." index="3"]
+position = Vector2(1.00006, 78.2044)
+
+[node name="MarkerSpawn2" parent="." index="4"]
+position = Vector2(188.211, 139.808)
+
+[node name="MarkerFinal" parent="." index="5"]
+position = Vector2(127.407, 12.8007)
+
 [editable path="TutorialScreen"]

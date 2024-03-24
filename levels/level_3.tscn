@@ -20,3 +20,10 @@ offset_bottom = 1.48026
 [node name="GoalDescriptionText" parent="Goal/GoalDescription" index="0"]
 text = "[center][color= green]Prima misiune este simpla. [/color][/center]
 [font_size= 14]	Ajunge la capatul holului."
+
+[node name="MarkerSpawn2" parent="." index="3"]
+position = Vector2(83.2047, 139.208)
+
+[node name="MarkerFinal" parent="." index="4"]
+position = Vector2(179.21, 73.6041)
+rotation = 1.57079

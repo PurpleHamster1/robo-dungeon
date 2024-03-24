@@ -1,13 +1,52 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4v861ioa1j71"]
+[gd_scene load_steps=13 format=3 uid="uid://c4v861ioa1j71"]
 
 [ext_resource type="TileSet" uid="uid://c7g75dpmfmqqj" path="res://TileSet.tres" id="1_yi0om"]
 [ext_resource type="Script" path="res://scenes/TileScript.gd" id="2_6nt7g"]
 [ext_resource type="PackedScene" uid="uid://dibxa3w5slc3" path="res://scenes/character.tscn" id="3_gfijp"]
 [ext_resource type="Script" path="res://scenes/GoalMouseDetection.gd" id="4_ygrlc"]
 [ext_resource type="FontFile" uid="uid://c5qlnarmp075p" path="res://assets/fonts/rainyhearts.ttf" id="5_4qlwl"]
-[ext_resource type="Texture2D" uid="uid://rtesu7wlk301" path="res://assets/Goal.png" id="5_udy7b"]
+[ext_resource type="Texture2D" uid="uid://btdu3a8ofvrqc" path="res://assets/icons/crosshair 1.png" id="5_7botd"]
 [ext_resource type="Script" path="res://levels/GoalMarker.gd" id="6_4k0ok"]
 [ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="6_au5so"]
+[ext_resource type="Texture2D" uid="uid://dn873d3ojnu4h" path="res://assets/icons/crosshair 2.png" id="7_i6abd"]
+
+[sub_resource type="Animation" id="Animation_stnub"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(9.53674e-06, 0), Vector2(9.53674e-06, -2.14917), Vector2(9.53674e-06, 0), Vector2(9.53674e-06, 2.14917)]
+}
+
+[sub_resource type="Animation" id="Animation_vho51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9.53674e-06, -2.14917)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sx7g"]
+_data = {
+"RESET": SubResource("Animation_vho51"),
+"new_animation": SubResource("Animation_stnub")
+}
 
 [node name="Level0" type="TileMap"]
 scale = Vector2(4.99972, 4.99972)
@@ -35,11 +74,22 @@ script = ExtResource("4_ygrlc")
 
 [node name="GoalMarker" type="Sprite2D" parent="Goal"]
 visible = false
-position = Vector2(255.421, -177.785)
-scale = Vector2(0.142597, 0.142597)
-texture = ExtResource("5_udy7b")
-offset = Vector2(10, -70)
+position = Vector2(252.845, -177.785)
+scale = Vector2(2.39791, 2.39791)
+texture = ExtResource("5_7botd")
 script = ExtResource("6_4k0ok")
+
+[node name="Crosshair2" type="Sprite2D" parent="Goal/GoalMarker"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(9.53674e-06, -2.14917)
+scale = Vector2(1.07458, 1.07458)
+texture = ExtResource("7_i6abd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Goal/GoalMarker/Crosshair2"]
+libraries = {
+"": SubResource("AnimationLibrary_4sx7g")
+}
+autoplay = "new_animation"
 
 [node name="CheckGoal" type="RichTextLabel" parent="Goal"]
 texture_filter = 3
@@ -59,9 +109,9 @@ text = "VERIFICA MISIUNEA"
 visible = false
 layout_mode = 0
 offset_left = 0.322357
-offset_top = -118.842
+offset_top = -121.096
 offset_right = 129.322
-offset_bottom = 1.15759
+offset_bottom = -1.0965
 
 [node name="GoalDescriptionText" type="RichTextLabel" parent="Goal/GoalDescription"]
 layout_mode = 1
@@ -77,5 +127,14 @@ bbcode_enabled = true
 text = "[center][color= green]Prima misiune este simpla. [/color][/center]
 [font_size= 14]	Ajungi la usa."
 
+[node name="MarkerSpawn1" type="Node2D" parent="."]
+
+[node name="MarkerSpawn2" type="Node2D" parent="."]
+position = Vector2(96.0054, 128.007)
+
+[node name="MarkerFinal" type="Node2D" parent="."]
+position = Vector2(160.009, 17.601)
+
 [connection signal="mouse_entered" from="Goal" to="Goal" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Goal" to="Goal" method="_on_mouse_exited"]
+[connection signal="visibility_changed" from="Goal/GoalMarker" to="Goal/GoalMarker" method="_on_visibility_changed"]
