@@ -20,10 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://bg6iemy7kha30" path="res://assets/icons/play 1.png" id="14_34jvo"]
 [ext_resource type="Texture2D" uid="uid://drd6u1rs5qjab" path="res://assets/icons/play 2.png" id="15_dhhgt"]
 [ext_resource type="FontFile" uid="uid://cckot5eydccnm" path="res://assets/fonts/dogica.otf" id="15_k210x"]
-[ext_resource type="Texture2D" uid="uid://bwbasq8ag8m7u" path="res://assets/Arrow-Right-1-icon.png" id="16_4o0c0"]
 [ext_resource type="Script" path="res://scenes/Settings.gd" id="17_3il0j"]
 [ext_resource type="FontFile" uid="uid://cmneu8yi1l5tw" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="17_rud7c"]
 [ext_resource type="Texture2D" uid="uid://cq81ehxa8ket7" path="res://assets/SetCog1.png" id="20_a3gta"]
+[ext_resource type="Texture2D" uid="uid://chj8vat5m7vhk" path="res://assets/icons/arrow.png" id="20_u115b"]
 [ext_resource type="Script" path="res://scenes/ButtonLevelSelect.gd" id="20_y57jb"]
 [ext_resource type="Script" path="res://scenes/MainMenu.gd" id="21_buxsr"]
 [ext_resource type="Texture2D" uid="uid://c4flboetpcoov" path="res://assets/SetCog2.png" id="21_fa5tx"]
@@ -305,6 +305,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -407,9 +411,9 @@ text = "Reset"
 [node name="Arrow" type="Sprite2D" parent="GUI"]
 z_index = 5
 z_as_relative = false
-position = Vector2(944, 42)
-scale = Vector2(0.109375, 0.109375)
-texture = ExtResource("16_4o0c0")
+position = Vector2(932.675, 32.4378)
+scale = Vector2(4.68332, 4.68332)
+texture = ExtResource("20_u115b")
 
 [node name="GameSpeed" type="Panel" parent="GUI"]
 offset_left = 663.803
@@ -633,12 +637,6 @@ toggle_mode = true
 texture_normal = ExtResource("20_a3gta")
 texture_hover = ExtResource("21_fa5tx")
 stretch_mode = 0
-
-[node name="Panel" type="Panel" parent="GUI"]
-offset_left = 941.0
-offset_top = 5.0
-offset_right = 981.0
-offset_bottom = 45.0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 visible = false
