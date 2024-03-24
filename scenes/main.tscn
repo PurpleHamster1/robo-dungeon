@@ -50,7 +50,7 @@ content_margin_bottom = 20.0
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_h5l5y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4b2b"]
-content_margin_bottom = 100.0
+content_margin_bottom = 70.0
 bg_color = Color(0.917647, 0.415686, 0.658824, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bt5n6"]
