@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=72 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://scenes/MainMenu.gd" id="21_buxsr"]
 [ext_resource type="Texture2D" uid="uid://c4flboetpcoov" path="res://assets/SetCog2.png" id="21_fa5tx"]
 [ext_resource type="Texture2D" uid="uid://by5do7hqoog8j" path="res://assets/Wallpaper 1.png" id="21_fy2bn"]
+[ext_resource type="Texture2D" uid="uid://claokabju56k1" path="res://assets/icons/speed 1.png" id="22_ktgxx"]
 [ext_resource type="Texture2D" uid="uid://bx3e18ojhdy8p" path="res://assets/Wallpaper 2.png" id="22_v6fsg"]
 [ext_resource type="Texture2D" uid="uid://gdomnol8s52q" path="res://assets/Wallpaper 3.png" id="23_d4f4r"]
 [ext_resource type="Texture2D" uid="uid://m6fnnf4rqxen" path="res://assets/Wallpaper 4.png" id="24_6mbud"]
@@ -80,6 +81,9 @@ shader_parameter/aperture_grille_rate = 1.0
 shader_parameter/rf_switch_esque_blur = 0.0
 shader_parameter/white_noise_rate = 0.094
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pol8e"]
+bg_color = Color(0, 0, 0, 0.290196)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sucy6"]
 size = Vector2(826, 730)
 
@@ -90,6 +94,9 @@ size = Vector2(826, 730)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjclc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5rhp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hicf0"]
+bg_color = Color(0, 0, 0, 0.290196)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw5dc"]
 bg_color = Color(0.243137, 0.156863, 0, 1)
@@ -292,6 +299,17 @@ texture_disabled = ExtResource("15_dhhgt")
 stretch_mode = 0
 script = ExtResource("13_ohqwf")
 
+[node name="Panel" type="Panel" parent="GUI/RunButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pol8e")
+
 [node name="DraggingZone" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
@@ -394,10 +412,12 @@ scale = Vector2(0.109375, 0.109375)
 texture = ExtResource("16_4o0c0")
 
 [node name="GameSpeed" type="Panel" parent="GUI"]
-offset_left = 664.0
-offset_top = 568.0
-offset_right = 800.0
-offset_bottom = 704.0
+offset_left = 663.803
+offset_top = 575.449
+offset_right = 799.803
+offset_bottom = 711.449
+scale = Vector2(0.895361, 0.895361)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hicf0")
 script = ExtResource("13_cpefg")
 
 [node name="Slider" type="HSlider" parent="GUI/GameSpeed"]
@@ -415,6 +435,7 @@ tick_count = 10
 ticks_on_borders = true
 
 [node name="Title" type="Label" parent="GUI/GameSpeed"]
+visible = false
 layout_mode = 0
 offset_right = 136.0
 offset_bottom = 48.0
@@ -434,6 +455,11 @@ theme_override_font_sizes/font_size = 22
 text = "10 x"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Speed1" type="Sprite2D" parent="GUI/GameSpeed"]
+position = Vector2(67.75, 68.75)
+scale = Vector2(9.53125, 9.53125)
+texture = ExtResource("22_ktgxx")
 
 [node name="Settings" type="Panel" parent="GUI"]
 visible = false
