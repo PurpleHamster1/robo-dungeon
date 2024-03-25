@@ -108,35 +108,36 @@ func move_char(direction : String, steps : int):
 	#print(self.map_to_local(neighborCell))
 	#CHECK IF WALL OR ANYTHING ELSE
 	var tileData = self.get_cell_tile_data(0, neighborCell)
-	if tileData.get_custom_data("Type") == "floor":
-		print("moving to floor")
-		tween = get_tree().create_tween()
-		tween.tween_property(robot, "position", self.map_to_local(neighborCell), 0.5).set_trans(Tween.TRANS_CIRC)
-	elif tileData.get_custom_data("Type") == "wall":
-		print("Moving into wall")
-		var initialPos = robot.position
-		var wallPos = self.map_to_local(neighborCell)
-		tween = get_tree().create_tween()
-		await tween.tween_property(robot, "position", robot.position + (wallPos - robot.position)/2, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).finished
-		tween = get_tree().create_tween()
-		await tween.tween_property(robot, "position", initialPos, 0.5).set_trans(Tween.TRANS_BOUNCE).finished
-	elif tileData.get_custom_data("Type") == "hole":
-		print("falling")
-		tween = get_tree().create_tween()
-		Global.state = "awaitingRestart"
-		await tween.tween_property(robot, "position", self.map_to_local(neighborCell), 0.5).set_trans(Tween.TRANS_CIRC).finished
-		tween = get_tree().create_tween()
-		tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees + 1000, 1)
-		tween.parallel().tween_property(robot, "modulate:a", 0, 1)
+	if tileData != null:
+		if tileData.get_custom_data("Type") == "floor":
+			print("moving to floor")
+			tween = get_tree().create_tween()
+			tween.tween_property(robot, "position", self.map_to_local(neighborCell), 0.5 / Global.gameSpeed).set_trans(Tween.TRANS_CIRC)
+		elif tileData.get_custom_data("Type") == "wall":
+			print("Moving into wall")
+			var initialPos = robot.position
+			var wallPos = self.map_to_local(neighborCell)
+			tween = get_tree().create_tween()
+			await tween.tween_property(robot, "position", robot.position + (wallPos - robot.position)/2, 0.1 / Global.gameSpeed).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).finished
+			tween = get_tree().create_tween()
+			await tween.tween_property(robot, "position", initialPos, 0.5 / Global.gameSpeed).set_trans(Tween.TRANS_BOUNCE).finished
+		elif tileData.get_custom_data("Type") == "hole":
+			print("falling")
+			tween = get_tree().create_tween()
+			Global.state = "awaitingRestart"
+			await tween.tween_property(robot, "position", self.map_to_local(neighborCell), 0.5 / Global.gameSpeed).set_trans(Tween.TRANS_CIRC).finished
+			tween = get_tree().create_tween()
+			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees + 1000, 1 / Global.gameSpeed)
+			tween.parallel().tween_property(robot, "modulate:a", 0, 1 / Global.gameSpeed)
 
 func rotate_char(direction : String):
 	match direction:
 		"Right":
 			tween = get_tree().create_tween()
-			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees + 90, 0.5).set_trans(Tween.TRANS_CIRC)
+			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees + 90, 0.5 / Global.gameSpeed).set_trans(Tween.TRANS_CIRC)
 		"Left":
 			tween = get_tree().create_tween()
-			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees - 90, 0.5).set_trans(Tween.TRANS_CIRC)
+			tween.tween_property(robot, "rotation_degrees", robot.rotation_degrees - 90, 0.5 / Global.gameSpeed).set_trans(Tween.TRANS_CIRC)
 
 func check_repeat_end_difference_bellow(index):
 	var diff = 0
@@ -218,7 +219,7 @@ func run_code():
 			#move the arrow
 			tween = get_tree().create_tween()
 			tween.tween_property(arrow, "global_position", Vector2(arrow.global_position.x, codeBlock.global_position.y+9), 0.1)
-			await get_tree().create_timer(Global.ticktime).timeout
+			await get_tree().create_timer(Global.ticktime / Global.gameSpeed).timeout
 			codeBlock.get_node("Background").modulate.r = 1
 			i+=1
 		elif Global.state == "win":

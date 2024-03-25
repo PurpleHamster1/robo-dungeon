@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=83 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
@@ -45,6 +45,14 @@
 [ext_resource type="Texture2D" uid="uid://dnfsb4jnml71j" path="res://assets/Wallpaper 11.png" id="31_tdp1d"]
 [ext_resource type="Texture2D" uid="uid://ce5ddigeqy7wc" path="res://assets/Wallpaper 12.png" id="32_cgxpd"]
 [ext_resource type="PackedScene" uid="uid://da5v4w1caojwr" path="res://scenes/LevelButton.tscn" id="36_rmla6"]
+[ext_resource type="Texture2D" uid="uid://cgjni2ggew8eb" path="res://assets/map/zone1.png" id="45_wnx6d"]
+[ext_resource type="Script" path="res://scenes/MapDefault.gd" id="46_hyrwq"]
+[ext_resource type="Texture2D" uid="uid://3a66msijhdo0" path="res://assets/map/zone1-1.png" id="47_cm2ki"]
+[ext_resource type="Texture2D" uid="uid://c5gtni7aa51or" path="res://assets/map/zone1-2.png" id="48_h6h83"]
+[ext_resource type="Texture2D" uid="uid://bvfgk6o4162js" path="res://assets/map/zone1-3.png" id="49_uxuj1"]
+[ext_resource type="Texture2D" uid="uid://p1i8kshkg2ai" path="res://assets/map/zone1-4.png" id="50_vf1uo"]
+[ext_resource type="Texture2D" uid="uid://ts56qyo83kgm" path="res://assets/map/zone1-5.png" id="51_4x0xk"]
+[ext_resource type="Texture2D" uid="uid://d0xc063gfmsa6" path="res://assets/map/zone1-6.png" id="52_htwhe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tq1l"]
 bg_color = Color(0.243137, 0.156863, 0, 1)
@@ -998,6 +1006,60 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dmcfd")
 
+[node name="MapDefault" type="Sprite2D" parent="MainMenu/LevelSelect"]
+position = Vector2(679.97, 377.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("45_wnx6d")
+script = ExtResource("46_hyrwq")
+
+[node name="Maps" type="Control" parent="MainMenu/LevelSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Zone1" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("47_cm2ki")
+
+[node name="Zone2" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("48_h6h83")
+
+[node name="Zone3" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("49_uxuj1")
+
+[node name="Zone4" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("50_vf1uo")
+
+[node name="Zone5" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("51_4x0xk")
+
+[node name="Zone6" type="Sprite2D" parent="MainMenu/LevelSelect/Maps"]
+visible = false
+position = Vector2(639.97, 361.595)
+scale = Vector2(3.08859, 3.13093)
+texture = ExtResource("52_htwhe")
+
 [node name="NinePatch" type="NinePatchRect" parent="MainMenu/LevelSelect"]
 top_level = true
 z_index = 5
@@ -1016,19 +1078,19 @@ axis_stretch_vertical = 1
 
 [node name="Button" parent="MainMenu/LevelSelect" instance=ExtResource("36_rmla6")]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 136.0
-offset_right = 256.0
-offset_bottom = 264.0
+offset_left = 77.7381
+offset_top = 232.0
+offset_right = 205.738
+offset_bottom = 360.0
 scale = Vector2(0.882244, 0.882244)
 text = "I"
 
 [node name="Button2" parent="MainMenu/LevelSelect" instance=ExtResource("36_rmla6")]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 216.0
-offset_right = 416.0
-offset_bottom = 344.0
+offset_left = 385.162
+offset_top = 108.0
+offset_right = 513.162
+offset_bottom = 236.0
 scale = Vector2(0.882244, 0.882244)
 text = "II"
 level = 2
@@ -1036,10 +1098,10 @@ levelName = "Level2"
 
 [node name="Button3" parent="MainMenu/LevelSelect" instance=ExtResource("36_rmla6")]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 400.0
-offset_right = 288.0
-offset_bottom = 528.0
+offset_left = 1013.9
+offset_top = 98.2498
+offset_right = 1141.9
+offset_bottom = 226.25
 scale = Vector2(0.882244, 0.882244)
 text = "III"
 level = 3

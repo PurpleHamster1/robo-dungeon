@@ -15,4 +15,5 @@ func _process(delta):
 
 func _on_slider_drag_ended(value_changed):
 	gameSpeedText.text = str(slider.value) + " x"
-	Engine.time_scale = slider.value
+	Global.gameSpeed = slider.value
+	#Engine.time_scale = slider.value
