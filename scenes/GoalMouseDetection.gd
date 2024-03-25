@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _on_mouse_entered():
-	goalDescription.visible = true
+	#goalDescription.visible = true
 	goalMarker.visible = true
 
 

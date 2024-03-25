@@ -1,19 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://b120ai0n18x8l"]
+[gd_scene load_steps=20 format=3 uid="uid://b120ai0n18x8l"]
 
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="1_gb16l"]
 [ext_resource type="PackedScene" uid="uid://b0336sy6jd1lc" path="res://scenes/tutorial_screen.tscn" id="2_1845i"]
 [ext_resource type="FontFile" uid="uid://dlcro7m7msi18" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="3_8jb8o"]
+[ext_resource type="Texture2D" uid="uid://cusutbfuoduni" path="res://assets/Frame.png" id="4_0ext0"]
 [ext_resource type="PackedScene" uid="uid://bp4w447mu05w4" path="res://scenes/PulsatingArrow.tscn" id="4_2fvdv"]
+[ext_resource type="Shader" path="res://scenes/CRT.gdshader" id="5_tup6h"]
+[ext_resource type="Script" path="res://scenes/CRTFilter.gd" id="6_7xkjf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mga7t"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_151bb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qboaa"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68a7n"]
+shader = ExtResource("5_tup6h")
+shader_parameter/crt_curve = 0.0
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.618
+shader_parameter/rf_switch_esque_blur = 0.0
+shader_parameter/white_noise_rate = 0.045
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ofcw"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjagr"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7id20"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r03sa"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta305"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjjtq"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5s4d"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bodni"]
+bg_color = Color(0.243137, 0.156863, 0, 1)
+
 [node name="Level1" instance=ExtResource("1_gb16l")]
 layer_0/tile_data = PackedInt32Array(65537, 786432, 2, 65538, 655360, 9, 65539, 720896, 9, 65540, 0, 4, 65541, 65536, 4, 65542, 131072, 4, 65543, 327680, 1, 65544, 327680, 1, 65545, 0, 4, 131082, 65536, 5, 196618, 65536, 6, 131081, 0, 5, 131080, 1376256, 8, 131079, 327680, 1, 131078, 131072, 5, 131077, 65536, 5, 131076, 0, 5, 131075, 786432, 1, 131074, 720896, 1, 196610, 720896, 2, 196609, 786432, 2, 131073, 786432, 1, 196611, 786432, 2, 196612, 0, 6, 196615, 327680, 1, 196616, 327680, 1, 196617, 0, 6, 262145, 786432, 1, 327681, 786432, 2, 393217, 786432, 1, 393218, 720896, 1, 393219, 786432, 1, 393220, 327680, 1, 393221, 327680, 1, 327686, 327680, 1, 327687, 327680, 1, 327688, 327680, 1, 327689, 327680, 1, 327690, 786432, 1610612747, 262154, 327680, 1, 262153, 327680, 1, 262152, 327680, 1, 262148, 1310720, 8, 262147, 786432, 1, 262146, 720896, 1, 327682, 720896, 2, 327683, 786432, 2, 327684, 327680, 1, 327685, 1376256, 8, 393222, 327680, 1, 393223, 327680, 1, 393224, 327680, 1, 393225, 1376256, 8, 393226, 327680, 1, 65547, 131072, 4, 131083, 131072, 5, 196619, 131072, 6, 262155, 1245184, 8, 327691, 1245184, 8, 393227, 1245184, 8, 458762, 327680, 1, 458761, 327680, 1, 458760, 327680, 1, 458759, 327680, 1, 458758, 1376256, 8, 458757, 786432, 805306379, 458756, 327680, 1, 458755, 786432, 2, 458754, 720896, 2, 458753, 786432, 2, 393216, 720896, 1, 327680, 720896, 2, 262144, 720896, 1, 196608, 720896, 2, 131072, 720896, 1, 65536, 720896, 2, 458763, 1245184, 8, 458752, 720896, 2, 11, 131072, 3, 10, 65536, 3, 9, 0, 3, 8, 327680, 1, 7, 327680, 1, 6, 131072, 3, 5, 65536, 3, 4, 0, 3, 3, 720896, 8, 2, 655360, 8, 1, 786432, 1, 0, 720896, 1, 524290, 720896, 1, 524289, 786432, 1, 524291, 786432, 1, 524292, 1114112, 9, 524293, 1179648, 9, 524294, 1179648, 9, 524295, 1179648, 9, 524296, 1179648, 9, 524297, 1179648, 9, 524298, 1179648, 9, 524299, 1245184, 9, 524288, 720896, 1, 65546, 65536, 4, 262151, 327680, 1, 262150, 327680, 1, 262149, 327680, 1, 196613, 65536, 6, 196614, 131072, 6, 589824, 720896, 2, 589825, 786432, 2, 589826, 720896, 2, 589827, 786432, 2, -65534, 655360, 7, -65533, 720896, 7)
 layer_1/tile_data = PackedInt32Array(8, 393216, 12, 7, 327680, 12, 65543, 327680, 12, 65544, 393216, 12, 131080, 393216, 12, 196616, 393216, 13, -65535, 917504, 6, 1, 917504, 7, 65537, 917504, 8, 131073, 917504, 9, -65536, 917504, 6, 0, 917504, 7, 65536, 917504, 8, 131072, 917504, 9, 327684, 851968, 2, 393220, 655360, 5, 458756, 851968, 2, 196615, 327680, 13, 131079, 327680, 12)
 layer_2/name = "Box"
-layer_2/tile_data = PackedInt32Array(262150, 0, 22, 196615, 0, 22)
+layer_2/tile_data = PackedInt32Array()
 initialCharPos = Vector2i(7, 5)
 nextLevel = "Level2"
 commandsAv = ["MoveForward"]
@@ -39,12 +77,15 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/1" index="0"]
 layout_mode = 0
-offset_left = 7.42554
+offset_left = 12.0665
 offset_top = 99.3167
-offset_right = 255.426
+offset_right = 260.067
 offset_bottom = 233.317
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_mga7t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mga7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mga7t")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Bine ai venit! 
@@ -54,6 +95,39 @@ invata concepte de baza
 ale programarii.
  
 (apasa pentru a contiuna)"
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/1" index="1"]
+top_level = true
+z_index = 2
+offset_left = 10.0
+offset_top = 198.0
+offset_right = 98.0
+offset_bottom = 248.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/1" index="2"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 99.0
+offset_right = -187.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="2" type="Control" parent="TutorialScreen" index="1"]
 visible = false
@@ -70,12 +144,48 @@ offset_right = 336.178
 offset_bottom = 219.141
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ofcw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3ofcw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3ofcw")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Acesta este robotul tau!"
 
 [node name="Arrow-right-1-icon" parent="TutorialScreen/2" index="1" instance=ExtResource("4_2fvdv")]
 position = Vector2(239.938, 250.148)
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/2" index="2"]
+top_level = true
+z_index = 2
+offset_left = 174.0
+offset_top = 198.0
+offset_right = 262.0
+offset_bottom = 216.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/2" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 179.0
+offset_right = -108.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="3" type="Control" parent="TutorialScreen" index="2"]
 visible = false
@@ -85,12 +195,15 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/3" index="0"]
 layout_mode = 0
-offset_left = 42.2328
-offset_top = 71.935
-offset_right = 290.233
-offset_bottom = 115.935
+offset_left = 30.6304
+offset_top = 84.0015
+offset_right = 278.631
+offset_bottom = 128.001
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjagr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fjagr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fjagr")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Obiectivul tau este sa
@@ -99,6 +212,39 @@ ajungi aici!"
 [node name="Arrow-right-1-icon" parent="TutorialScreen/3" index="1" instance=ExtResource("4_2fvdv")]
 position = Vector2(300.27, 60.7966)
 rotation = -1.57079
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/3" index="2"]
+top_level = true
+z_index = 2
+offset_left = 49.0
+offset_top = 164.0
+offset_right = 137.0
+offset_bottom = 184.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/3" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.3976
+offset_top = 84.0665
+offset_right = -168.602
+offset_bottom = -202.934
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="4" type="Control" parent="TutorialScreen" index="3"]
 visible = false
@@ -115,6 +261,9 @@ offset_bottom = 212.467
 scale = Vector2(0.77779, 0.77779)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_7id20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7id20")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7id20")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Poti sa iti verifici misiunea aici!"
@@ -122,6 +271,39 @@ text = "Poti sa iti verifici misiunea aici!"
 [node name="Arrow-right-1-icon" parent="TutorialScreen/4" index="1" instance=ExtResource("4_2fvdv")]
 position = Vector2(33.8791, 239.474)
 rotation = 1.57079
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/4" index="2"]
+top_level = true
+z_index = 2
+offset_left = 10.0
+offset_top = 347.0
+offset_right = 109.0
+offset_bottom = 362.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/4" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 168.0
+offset_right = -153.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="5" type="Control" parent="TutorialScreen" index="4"]
 visible = false
@@ -131,13 +313,16 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/5" index="0"]
 layout_mode = 0
-offset_left = 196.777
-offset_top = 179.141
-offset_right = 428.777
-offset_bottom = 229.141
+offset_left = 180.534
+offset_top = 178.213
+offset_right = 412.534
+offset_bottom = 228.213
 scale = Vector2(0.849395, 0.849395)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_r03sa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r03sa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r03sa")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Aici sunt blocurile
@@ -147,6 +332,39 @@ text = "Aici sunt blocurile
 position = Vector2(419.543, 238.546)
 rotation = 0.523598
 
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/5" index="2"]
+top_level = true
+z_index = 2
+offset_left = 377.0
+offset_top = 373.0
+offset_right = 448.0
+offset_bottom = 391.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/5" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 181.757
+offset_top = 180.072
+offset_right = -66.2434
+offset_bottom = -112.928
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
+
 [node name="6" type="Control" parent="TutorialScreen" index="5"]
 visible = false
 anchors_preset = 0
@@ -155,13 +373,16 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/6" index="0"]
 layout_mode = 0
-offset_left = 178.677
+offset_left = 161.505
 offset_top = 25.5253
-offset_right = 410.677
+offset_right = 393.505
 offset_bottom = 177.525
 scale = Vector2(0.849395, 0.849395)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_ta305")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ta305")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ta305")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Le poti trage aici.
@@ -181,6 +402,39 @@ rotation = 0.0
 position = Vector2(407.013, 233.441)
 rotation = 1.57079
 
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/6" index="3"]
+top_level = true
+z_index = 2
+offset_left = 340.0
+offset_top = 39.0
+offset_right = 410.0
+offset_bottom = 87.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/6" index="4"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 164.828
+offset_top = 26.0
+offset_right = -83.1716
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
+
 [node name="7" type="Control" parent="TutorialScreen" index="6"]
 visible = false
 anchors_preset = 0
@@ -189,13 +443,16 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/7" index="0"]
 layout_mode = 0
-offset_left = 178.677
+offset_left = 165.218
 offset_top = 25.5253
-offset_right = 410.677
+offset_right = 397.218
 offset_bottom = 177.525
 scale = Vector2(0.849395, 0.849395)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_xjjtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xjjtq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xjjtq")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Ca sa scoti un bloc
@@ -205,6 +462,39 @@ tragi in afara zonei"
 [node name="Arrow-right-1-icon" parent="TutorialScreen/7" index="1" instance=ExtResource("4_2fvdv")]
 position = Vector2(410.725, 99.3167)
 rotation = 0.0
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/7" index="2"]
+top_level = true
+z_index = 2
+offset_left = 348.0
+offset_top = 39.0
+offset_right = 418.0
+offset_bottom = 87.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/7" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 168.541
+offset_top = 26.0
+offset_right = -81.4588
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="8" type="Control" parent="TutorialScreen" index="7"]
 visible = false
@@ -221,6 +511,9 @@ offset_bottom = 177.525
 scale = Vector2(0.849395, 0.849395)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_x5s4d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x5s4d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5s4d")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Momentan ai un singur
@@ -231,6 +524,39 @@ face robotul sa se
 deplaseze cu un patrat
 in fata."
 
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/8" index="1"]
+top_level = true
+z_index = 2
+offset_left = 377.0
+offset_top = 39.0
+offset_right = 447.0
+offset_bottom = 87.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/8" index="2"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 182.0
+offset_top = 26.0
+offset_right = -68.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
+
 [node name="9" type="Control" parent="TutorialScreen" index="8"]
 visible = false
 anchors_preset = 0
@@ -239,13 +565,16 @@ offset_bottom = 331.0
 
 [node name="ButtonNext" type="Button" parent="TutorialScreen/9" index="0"]
 layout_mode = 0
-offset_left = 187.031
-offset_top = 154.544
-offset_right = 435.031
-offset_bottom = 306.544
+offset_left = 137.837
+offset_top = 112.775
+offset_right = 385.837
+offset_bottom = 264.775
 scale = Vector2(0.849395, 0.849395)
 theme_override_fonts/font = ExtResource("3_8jb8o")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_bodni")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bodni")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bodni")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_151bb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qboaa")
 text = "Vei obtine mai multe
@@ -258,6 +587,39 @@ jurnal."
 [node name="Arrow-right-1-icon" parent="TutorialScreen/9" index="1" instance=ExtResource("4_2fvdv")]
 position = Vector2(87.7142, 250.612)
 rotation = 1.57079
+
+[node name="BottomNinePatch2" type="NinePatchRect" parent="TutorialScreen/9" index="2"]
+top_level = true
+z_index = 2
+offset_left = 279.0
+offset_top = 238.0
+offset_right = 355.0
+offset_bottom = 285.0
+scale = Vector2(6.3997, 6.3997)
+texture = ExtResource("4_0ext0")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CRTFilter" type="ColorRect" parent="TutorialScreen/9" index="3"]
+z_index = 1
+material = SubResource("ShaderMaterial_68a7n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 137.806
+offset_top = 118.231
+offset_right = -97.1942
+offset_bottom = -88.7687
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_7xkjf")
 
 [node name="MarkerSpawn1" parent="." index="3"]
 position = Vector2(1.00006, 78.2044)
