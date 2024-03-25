@@ -652,6 +652,18 @@ texture = ExtResource("1_am4qi")
 11:21/0 = 0
 12:21/0 = 0
 13:21/0 = 0
+0:22/0 = 0
+0:22/0/custom_data_0 = "box"
+0:22/0/custom_data_1 = "green"
+0:22/0/custom_data_2 = "none"
+1:22/0 = 0
+1:22/0/custom_data_0 = "box"
+1:22/0/custom_data_1 = "red"
+1:22/0/custom_data_2 = "none"
+2:22/0 = 0
+2:22/0/custom_data_0 = "box"
+2:22/0/custom_data_1 = "blue"
+2:22/0/custom_data_2 = "none"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oo4q3"]
 texture = ExtResource("2_p45v1")
@@ -835,5 +847,9 @@ texture = ExtResource("2_p45v1")
 [resource]
 custom_data_layer_0/name = "Type"
 custom_data_layer_0/type = 4
+custom_data_layer_1/name = "BoxType"
+custom_data_layer_1/type = 4
+custom_data_layer_2/name = "Wall"
+custom_data_layer_2/type = 4
 sources/0 = SubResource("TileSetAtlasSource_2hcsc")
 sources/1 = SubResource("TileSetAtlasSource_oo4q3")

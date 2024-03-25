@@ -8,7 +8,8 @@ var allLevels = {
 	"Level0" = preload("res://levels/level_0.tscn"),
 	"Level1" = preload("res://levels/level_1.tscn"),
 	"Level2" = preload("res://levels/level_2.tscn"),
-	"Level3" = preload("res://levels/level_3.tscn")
+	"Level3" = preload("res://levels/level_3.tscn"),
+	"Level4" = preload("res://levels/level_4.tscn")
 }
 
 func change_level(levelName):

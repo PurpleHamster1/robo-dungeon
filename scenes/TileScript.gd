@@ -76,6 +76,11 @@ func check_win_condition():
 				if completed == false: 
 					completed = true
 					Global.state = "win"
+		"Level3":
+			if local_to_map(robot.position) == Vector2i(11, 4) or local_to_map(robot.position) == Vector2i(0, 3):
+				if completed == false: 
+					completed = true
+					Global.state = "win"
 
 func get_char_tile():
 	return self.get_cell_tile_data(0,self.local_to_map(robot.position)).get_custom_data("Type")

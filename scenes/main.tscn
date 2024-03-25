@@ -998,7 +998,6 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="LevelSelect" type="Panel" parent="MainMenu"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1106,6 +1105,15 @@ scale = Vector2(0.882244, 0.882244)
 text = "III"
 level = 3
 levelName = "Level3"
+
+[node name="Button4" parent="MainMenu/LevelSelect" instance=ExtResource("36_rmla6")]
+offset_left = 1090.0
+offset_top = 440.0
+offset_right = 1218.0
+offset_bottom = 568.0
+text = "IV"
+level = 4
+levelName = "Level4"
 
 [node name="Selecteaza" type="Label" parent="MainMenu/LevelSelect"]
 layout_mode = 1
