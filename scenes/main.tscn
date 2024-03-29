@@ -743,6 +743,7 @@ z_index = 12
 z_as_relative = true
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("21_buxsr")
 
 [node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]

@@ -15,8 +15,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.highestLevel < level:
-		overlay.visible = true
-		overlay.mouse_filter = MOUSE_FILTER_STOP
+		#overlay.visible = true
+		#overlay.mouse_filter = MOUSE_FILTER_STOP
 		pass
 	else:
 		overlay.visible = false
