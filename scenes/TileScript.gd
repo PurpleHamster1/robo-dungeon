@@ -158,9 +158,9 @@ func check_repeat_end_difference_above(index):
 	var diff = 0
 	for i in range(index, -1, -1):
 		if commands.get_child(i).is_in_group("Ghost") == false:
-			if commands.get_child(i).commandName == "RepeatTimes":
+			if commands.get_child(i).commandName == "RepeatTimes" or commands.get_child(i).commandName == "If":
 				diff += 1
-			elif commands.get_child(i).commandName == "RepeatEnd":
+			elif commands.get_child(i).commandName == "RepeatEnd" or commands.get_child(i).commandName == "IfEnd":
 				diff -= 1
 	return diff
 
@@ -190,7 +190,7 @@ func set_indent():
 		if code.is_in_group("Command") and ghostCode == false:
 			var toIndent = check_repeat_end_difference_above(code.get_index())
 			if code.is_in_group("Ghost") == false:
-				if code.commandName == "RepeatTimes":
+				if code.commandName == "RepeatTimes" or code.commandName == "If":
 					toIndent -= 1
 			code.indent = toIndent
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=84 format=3 uid="uid://cdmo4ma55a7pw"]
+[gd_scene load_steps=85 format=3 uid="uid://cdmo4ma55a7pw"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_88fyu"]
 [ext_resource type="PackedScene" uid="uid://c4v861ioa1j71" path="res://levels/level_0.tscn" id="2_1x5lo"]
+[ext_resource type="PackedScene" uid="uid://cnc1j4wem8xb0" path="res://commandBlocks/if_end.tscn" id="3_heowo"]
 [ext_resource type="Texture2D" uid="uid://cusutbfuoduni" path="res://assets/Frame.png" id="5_036ah"]
 [ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="5_rmmfj"]
 [ext_resource type="PackedScene" uid="uid://cbhwunh0kj2ac" path="res://commandBlocks/rotate_right.tscn" id="6_iwd40"]
@@ -158,8 +159,12 @@ script = ExtResource("1_88fyu")
 [node name="Level0" parent="Level" instance=ExtResource("2_1x5lo")]
 initialCharPos = Vector2i(8, 1)
 initialCharRot = 90
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes", "If"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="IfEnd" parent="GUI" instance=ExtResource("3_heowo")]
+visible = false
 
 [node name="RepeatEnd" parent="GUI" instance=ExtResource("8_kwj4s")]
 visible = false

@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://ey0xib711c02"]
+
+[ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_00mbk"]
+[ext_resource type="Script" path="res://commandBlocks/if.gd" id="2_ibeqi"]
+[ext_resource type="Script" path="res://commandBlocks/IfScript.gd" id="3_pne4t"]
+
+[node name="If" instance=ExtResource("1_00mbk")]
+script = ExtResource("2_ibeqi")
+commandName = "If"
+tileType = ""
+tileLocation = ""
+
+[node name="Text" parent="Background" index="0"]
+text = "Daca     in"
+
+[node name="TileDrop" type="OptionButton" parent="Background" index="4"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 182.0
+offset_bottom = 42.0
+scale = Vector2(0.499634, 0.499634)
+theme_override_font_sizes/font_size = 20
+item_count = 3
+selected = 0
+popup/item_0/text = "Perete"
+popup/item_0/id = 0
+popup/item_1/text = "Gaura"
+popup/item_1/id = 1
+popup/item_2/text = "Podea"
+popup/item_2/id = 2
+
+[node name="LocationDrop" type="OptionButton" parent="Background" index="5"]
+layout_mode = 0
+offset_left = 139.0
+offset_right = 247.0
+offset_bottom = 36.0
+scale = Vector2(0.563354, 0.563354)
+item_count = 4
+selected = 0
+popup/item_0/text = "Sus"
+popup/item_0/id = 0
+popup/item_1/text = "Dreapta"
+popup/item_1/id = 1
+popup/item_2/text = "Jos"
+popup/item_2/id = 2
+popup/item_3/text = "Stanga"
+popup/item_3/id = 3
+
+[node name="IfScript" type="Control" parent="Background" index="6"]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 20.0
+mouse_filter = 2
+script = ExtResource("3_pne4t")
+
+[connection signal="item_selected" from="Background/TileDrop" to="." method="_on_tile_drop_item_selected"]
+[connection signal="item_selected" from="Background/LocationDrop" to="." method="_on_location_drop_item_selected"]

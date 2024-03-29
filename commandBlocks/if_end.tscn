@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnc1j4wem8xb0"]
+
+[ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="1_3l7np"]
+[ext_resource type="Script" path="res://commandBlocks/if_end.gd" id="2_sxkcd"]
+
+[node name="IfEnd" instance=ExtResource("1_3l7np")]
+script = ExtResource("2_sxkcd")
+commandName = "IfEnd"

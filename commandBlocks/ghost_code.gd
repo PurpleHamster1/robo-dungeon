@@ -9,9 +9,9 @@ func check_repeat_end_difference_above(index):
 	if commands.name == "VBoxContainer":
 		for i in range(index, -1, -1):
 			if commands.get_child(i).is_in_group("Ghost") == false:
-				if commands.get_child(i).commandName == "RepeatTimes":
+				if commands.get_child(i).commandName == "RepeatTimes" or commands.get_child(i).commandName == "If":
 					diff += 1
-				elif commands.get_child(i).commandName == "RepeatEnd":
+				elif commands.get_child(i).commandName == "RepeatEnd" or commands.get_child(i).commandName == "IfEnd":
 					diff -= 1
 	return diff
 

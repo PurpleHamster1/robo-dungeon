@@ -62,7 +62,7 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_6nt7g")
 initialCharPos = Vector2i(3, 3)
 nextLevel = "Level1"
-commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes"]
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes", "If", "IfEnd"]
 
 [node name="Character" parent="." instance=ExtResource("3_gfijp")]
 scale = Vector2(0.166269, 0.166269)
