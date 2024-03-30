@@ -16,6 +16,8 @@ var tween
 var errorIndex = -1
 var ghostCode
 var completed = false
+var roboRot 
+var neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
 
 func run_button_pressed():
 	print("clicked")
@@ -94,13 +96,12 @@ func teleport_char(pos : Vector2i):
 func move_char(direction : String, steps : int):
 	
 	var currentTile = get_char_pos()
-	var roboRot : int
 
 	if robot.rotation_degrees >= 0:
 		roboRot = 3 - round(robot.rotation_degrees / 90)
 	else:
 		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
-	var neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
+	neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
 	#print(int(abs(round(robot.rotation_degrees / 90)))-1)
 	
 	var neighborCell
@@ -194,6 +195,37 @@ func set_indent():
 					toIndent -= 1
 			code.indent = toIndent
 
+func if_condition_check(tile, location):
+	var tileToCheck
+	if robot.rotation_degrees >= 0:
+		roboRot = 3 - round(robot.rotation_degrees / 90)
+	else:
+		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
+	match location:
+		"Fata":
+			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot])
+		"Dreapta":
+			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot-1])
+		"Spate":
+			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot-2])
+		"Stanga":
+			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot-3])
+	
+	var tileTypeToCheck
+	match tile:
+		"Perete":
+			tileTypeToCheck = "wall"
+		"Podea":
+			tileTypeToCheck = "floor"
+		"Gaura":
+			tileTypeToCheck = "hole"
+	
+	var tileData = self.get_cell_tile_data(0, tileToCheck)
+	if tileData != null:
+		if tileData.get_custom_data("Type") == tileTypeToCheck:
+			return true
+	return false
+
 
 func run_code():
 	var i = 0
@@ -220,6 +252,12 @@ func run_code():
 						repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft -= 1
 						Global.reset_repeat_times.emit(repeatBlockStart.indent)
 						i = repeatBlockStart.get_index()
+				"If":
+					var ifBlockEnd = codeBlock.ifEnd
+					if if_condition_check(codeBlock.tileType, codeBlock.tileLocation) == true:
+						pass
+					else:
+						i = ifBlockEnd.get_index()
 			print(i)
 			#move the arrow
 			tween = get_tree().create_tween()
@@ -252,7 +290,7 @@ func _process(delta):
 	ghostCode = false
 	for code in commands.get_children():
 		if code.is_in_group("Ghost"):
-			print("There is ghost code")
+			#print("There is ghost code")
 			ghostCode = true
 			break
 	

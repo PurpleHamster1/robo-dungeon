@@ -3,6 +3,7 @@ extends MarginContainer
 @export var commandName : String
 @export var indent : int = 0
 @export var draggable : bool = false
+@export var ifEnd : Node
 
 @export var tileType : String
 @export var tileLocation : String
@@ -155,5 +156,5 @@ func _on_tile_drop_item_selected(index):
 
 
 func _on_location_drop_item_selected(index):
-	tileType = $Background/TileDrop.get_item_text(index)
-	tileLocation = $Background/LocationDrop.get_item_text(index)
+	tileType = $Background/TileDrop.get_item_text(index-1)
+	tileLocation = $Background/LocationDrop.get_item_text(index-1)

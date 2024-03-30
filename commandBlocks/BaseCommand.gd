@@ -26,8 +26,8 @@ func get_closest_drop():
 	var closestDrop = null
 	for body in area2d.get_overlapping_areas():
 		if body.is_in_group("Droppable") and body.get_parent().get_parent() != self:
-			if self.position.distance_to(body.position) < closestDistance:
-				closestDistance = self.position.distance_to(body.position)
+			if self.global_position.distance_to(body.global_position) < closestDistance:
+				closestDistance = self.position.distance_to(body.global_position)
 				closestDrop = body
 	return closestDrop
 
@@ -77,14 +77,17 @@ func _process(delta):
 				if dropZone != null:
 					#print(dropZone.name)
 					if commandName == "RepeatTimes" and $Background/RepeatDropDown.deployd == true and $Background/RepeatDropDown.endDeployd == true:
+						print("RepeatTimes")
 						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index():
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
 						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer": #and dropZone.get_parent().get_parent().get_index() < get_highest_end_index() + 1:
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
 					else:
 						if dropZone.is_in_group("AreaUp") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
+							print("Up")
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index())
 						elif dropZone.is_in_group("AreaDown") and dropZone.get_parent().get_parent().get_parent().name == "VBoxContainer":
+							print("down")
 							codingArea.move_child(ghostCode, dropZone.get_parent().get_parent().get_index()+1)
 				else:
 					#print("No dropzone")

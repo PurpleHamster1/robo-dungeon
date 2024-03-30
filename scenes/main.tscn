@@ -743,9 +743,21 @@ z_as_relative = true
 z_index = 67
 z_as_relative = true
 
+[node name="CollisionShape2D" parent="GUI/Jurnal/Desc/Repeta/RepeatEnd/Background/AreaUp" index="0"]
+position = Vector2(100, 0.249788)
+
+[node name="CollisionShape2D" parent="GUI/Jurnal/Desc/Repeta/RepeatEnd/Background/AreaDown" index="0"]
+position = Vector2(100, 20.5)
+
 [node name="repeat_times" parent="GUI/Jurnal/Desc/Repeta" index="2"]
 z_index = 12
 z_as_relative = true
+
+[node name="CollisionShape2D" parent="GUI/Jurnal/Desc/Repeta/repeat_times/Background/AreaUp" index="0"]
+position = Vector2(100, 0.249788)
+
+[node name="CollisionShape2D" parent="GUI/Jurnal/Desc/Repeta/repeat_times/Background/AreaDown" index="0"]
+position = Vector2(100, 20.5)
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 visible = false

@@ -180,6 +180,12 @@ offset_bottom = 153.0
 scale = Vector2(1.63965, 1.63965)
 script = null
 
+[node name="CollisionShape2D" parent="Desc/Repeta/RepeatEnd/Background/AreaUp" index="0"]
+position = Vector2(100, 0.249788)
+
+[node name="CollisionShape2D" parent="Desc/Repeta/RepeatEnd/Background/AreaDown" index="0"]
+position = Vector2(100, 20.5)
+
 [node name="repeat_times" parent="Desc/Repeta" instance=ExtResource("6_2yg1n")]
 layout_mode = 0
 offset_left = -27.0
@@ -188,6 +194,12 @@ offset_right = 183.0
 offset_bottom = 153.0
 scale = Vector2(1.56794, 1.56794)
 script = null
+
+[node name="CollisionShape2D" parent="Desc/Repeta/repeat_times/Background/AreaUp" index="0"]
+position = Vector2(100, 0.249788)
+
+[node name="CollisionShape2D" parent="Desc/Repeta/repeat_times/Background/AreaDown" index="0"]
+position = Vector2(100, 20.5)
 
 [node name="RepeatDropDown" parent="Desc/Repeta/repeat_times/Background" index="4"]
 script = null

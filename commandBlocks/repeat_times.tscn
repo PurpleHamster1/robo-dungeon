@@ -23,6 +23,9 @@ offset_bottom = 2.0
 theme_override_font_sizes/font_size = 17
 text = "Repeta de      ori"
 
+[node name="Area2D" parent="Background" index="1"]
+visible = true
+
 [node name="RepeatDropDown" type="OptionButton" parent="Background" index="4"]
 layout_mode = 1
 anchors_preset = 13

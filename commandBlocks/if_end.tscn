@@ -1,8 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnc1j4wem8xb0"]
+[gd_scene load_steps=5 format=3 uid="uid://cnc1j4wem8xb0"]
 
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="1_3l7np"]
 [ext_resource type="Script" path="res://commandBlocks/if_end.gd" id="2_sxkcd"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyw81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbwhn"]
+
 [node name="IfEnd" instance=ExtResource("1_3l7np")]
 script = ExtResource("2_sxkcd")
 commandName = "IfEnd"
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyw81")
+
+[node name="IndentLine" parent="Background/IndentLines" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pbwhn")
+
+[node name="CollisionShape2D" parent="Background/AreaUp" index="0"]
+position = Vector2(100, 0.249788)
+
+[node name="CollisionShape2D" parent="Background/AreaDown" index="0"]
+position = Vector2(100, 20.5)
