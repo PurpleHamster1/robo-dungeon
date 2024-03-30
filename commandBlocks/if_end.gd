@@ -72,6 +72,7 @@ func indent_lines():
 		indentLine.visible = true
 		var indexDiff = get_index() - ifStart.get_index()
 		indentLine.size.y = 20 + (38 * indexDiff)
+		ifStart.ifEnd = self
 		#if scale.x != 1:
 			#indentLine.scale = Vector2(1, 1/1.09)
 	else:

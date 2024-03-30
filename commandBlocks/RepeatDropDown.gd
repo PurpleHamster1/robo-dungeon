@@ -70,5 +70,8 @@ func _process(delta):
 
 
 func _on_item_selected(index):
-	repeatAmount = index + 2
-	repeatAmountLeft = repeatAmount
+	if index != 9:
+		repeatAmount = index + 2
+		repeatAmountLeft = repeatAmount
+	elif index == 9:
+		repeatAmount = 999

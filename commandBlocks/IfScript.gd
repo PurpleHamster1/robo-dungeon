@@ -56,6 +56,6 @@ func _process(delta):
 					if codingArea.get_child(i).commandName == "IfEnd" and codingArea.get_child(i).indent == mainBody.indent:
 						ifEnd = codingArea.get_child(i)
 						codingArea.get_child(i).ifStart = mainBody
-						mainBody.ifEnd = codingArea.get_child(i)
+						#mainBody.ifEnd = codingArea.get_child(i)
 		else:
 			indentDebouceFrameCount -= 1

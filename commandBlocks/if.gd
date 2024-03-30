@@ -152,9 +152,7 @@ func _on_area_2d_area_exited(area):
 
 func _on_tile_drop_item_selected(index):
 	tileType = $Background/TileDrop.get_item_text(index)
-	tileLocation = $Background/LocationDrop.get_item_text(index)
 
 
 func _on_location_drop_item_selected(index):
-	tileType = $Background/TileDrop.get_item_text(index-1)
-	tileLocation = $Background/LocationDrop.get_item_text(index-1)
+	tileLocation = $Background/LocationDrop.get_item_text(index)

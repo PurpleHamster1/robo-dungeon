@@ -101,7 +101,6 @@ func move_char(direction : String, steps : int):
 		roboRot = 3 - round(robot.rotation_degrees / 90)
 	else:
 		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
-	neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
 	#print(int(abs(round(robot.rotation_degrees / 90)))-1)
 	
 	var neighborCell
@@ -196,11 +195,12 @@ func set_indent():
 			code.indent = toIndent
 
 func if_condition_check(tile, location):
-	var tileToCheck
+	print("location is " + str(location))
 	if robot.rotation_degrees >= 0:
 		roboRot = 3 - round(robot.rotation_degrees / 90)
 	else:
 		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
+	var tileToCheck
 	match location:
 		"Fata":
 			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot])
@@ -210,7 +210,6 @@ func if_condition_check(tile, location):
 			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot-2])
 		"Stanga":
 			tileToCheck = self.get_neighbor_cell(get_char_pos(), neighbors[roboRot-3])
-	
 	var tileTypeToCheck
 	match tile:
 		"Perete":
@@ -219,11 +218,11 @@ func if_condition_check(tile, location):
 			tileTypeToCheck = "floor"
 		"Gaura":
 			tileTypeToCheck = "hole"
-	
-	var tileData = self.get_cell_tile_data(0, tileToCheck)
-	if tileData != null:
-		if tileData.get_custom_data("Type") == tileTypeToCheck:
-			return true
+	if tileToCheck != null:
+		var tileData = self.get_cell_tile_data(0, tileToCheck)
+		if tileData != null:
+			if tileData.get_custom_data("Type") == tileTypeToCheck:
+				return true
 	return false
 
 
@@ -258,7 +257,7 @@ func run_code():
 						pass
 					else:
 						i = ifBlockEnd.get_index()
-			print(i)
+						print("if not met, going to " + str(ifBlockEnd.get_index()))
 			#move the arrow
 			tween = get_tree().create_tween()
 			tween.tween_property(arrow, "global_position", Vector2(arrow.global_position.x, codeBlock.global_position.y+9), 0.1)
@@ -277,6 +276,10 @@ func _ready():
 	teleport_char(initialCharPos)
 	robot.rotation_degrees = initialCharRot
 	Global.reload_code_picker.emit()
+	if robot.rotation_degrees >= 0:
+		roboRot = 3 - round(robot.rotation_degrees / 90)
+	else:
+		roboRot = int(abs(round(robot.rotation_degrees / 90))-1) % 4
 	
 
 
