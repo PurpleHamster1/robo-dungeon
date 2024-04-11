@@ -8,10 +8,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.state == "running":
-		disabled = true
-	else:
-		disabled = false
+	#if Global.state == "running":
+		#disabled = true
+	#else:
+		#disabled = false
+	pass
 
 
 func _on_pressed():

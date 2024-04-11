@@ -51,6 +51,7 @@ func run_button_pressed():
 		if tween != null:
 			tween.kill()
 		Global.state = "coding"
+		await get_tree().create_timer(0.5).timeout
 		#runButton.text = "RUN CODE"
 		teleport_char(initialCharPos)
 		robot.rotation_degrees = initialCharRot
@@ -80,6 +81,11 @@ func check_win_condition():
 					Global.state = "win"
 		"Level3":
 			if local_to_map(robot.position) == Vector2i(11, 4) or local_to_map(robot.position) == Vector2i(0, 3):
+				if completed == false: 
+					completed = true
+					Global.state = "win"
+		"Level4":
+			if local_to_map(robot.position) == Vector2i(15, 9):
 				if completed == false: 
 					completed = true
 					Global.state = "win"
