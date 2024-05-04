@@ -159,7 +159,7 @@ script = ExtResource("1_88fyu")
 [node name="Level0" parent="Level" instance=ExtResource("2_1x5lo")]
 initialCharPos = Vector2i(8, 1)
 initialCharRot = 90
-commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes", "If"]
+commandsAv = ["MoveForward", "TurnLeft", "TurnRight", "RepeatTimes", "If", "Break"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -748,6 +748,7 @@ z_index = 12
 z_as_relative = true
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("21_buxsr")
 
 [node name="BackgroundArt" type="PanelContainer" parent="MainMenu"]

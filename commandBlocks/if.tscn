@@ -19,8 +19,8 @@ text = "Daca     in"
 
 [node name="TileDrop" type="OptionButton" parent="Background" index="4"]
 layout_mode = 0
-offset_left = 54.0
-offset_right = 182.0
+offset_left = 56.0
+offset_right = 184.0
 offset_bottom = 42.0
 scale = Vector2(0.499634, 0.499634)
 theme_override_font_sizes/font_size = 20
@@ -36,8 +36,8 @@ popup/item_2/id = 2
 
 [node name="LocationDrop" type="OptionButton" parent="Background" index="5"]
 layout_mode = 0
-offset_left = 139.0
-offset_right = 247.0
+offset_left = 145.0
+offset_right = 253.0
 offset_bottom = 36.0
 scale = Vector2(0.563354, 0.563354)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oo2yq")

@@ -15,4 +15,4 @@ commandName = "RotateRight"
 theme_override_styles/panel = SubResource("StyleBoxFlat_wlvr0")
 
 [node name="Text" parent="Background" index="0"]
-text = "Roteste Dreapta"
+text = "Rotește Dreapta"

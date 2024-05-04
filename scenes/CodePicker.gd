@@ -11,7 +11,8 @@ var codeTypes = {
 	"TurnRight": preload("res://commandBlocks/rotate_right.tscn"),
 	"RepeatTimes": preload("res://commandBlocks/repeat_times.tscn"),
 	"If": preload("res://commandBlocks/if.tscn"),
-	"IfEnd": preload("res://commandBlocks/if_end.tscn")
+	"IfEnd": preload("res://commandBlocks/if_end.tscn"),
+	"Break": preload("res://commandBlocks/break.tscn")
 	
 }
 var codeList = [preload("res://commandBlocks/move_foreward.tscn"), preload("res://commandBlocks/rotate_left.tscn"), preload("res://commandBlocks/rotate_right.tscn")]

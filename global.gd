@@ -11,6 +11,7 @@ var gameSpeed = 1
 var state = "coding"
 var current_drag
 var levelHover = 0
+var breakDepth = 0
 
 var CRT = true
 

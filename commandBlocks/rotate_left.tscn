@@ -15,4 +15,9 @@ commandName = "RotateLeft"
 theme_override_styles/panel = SubResource("StyleBoxFlat_cidfh")
 
 [node name="Text" parent="Background" index="0"]
-text = "Roteste Stanga"
+offset_left = 3.0
+offset_top = -6.0
+offset_right = -5.0
+offset_bottom = 3.0
+scale = Vector2(1.04617, 1.04617)
+text = "Rotește Stânga"

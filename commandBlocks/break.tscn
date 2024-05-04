@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://djpg8ldf4s324"]
+
+[ext_resource type="PackedScene" uid="uid://bbsa6nosfft2q" path="res://commandBlocks/BaseCommand.tscn" id="1_spjpj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncyyb"]
+bg_color = Color(0.756863, 0.160784, 0.156863, 1)
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_detail = 2
+
+[node name="break" instance=ExtResource("1_spjpj")]
+commandName = "Break"
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncyyb")
+
+[node name="Text" parent="Background" index="0"]
+text = "  Break"

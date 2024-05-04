@@ -18,6 +18,7 @@ var ghostCode
 var completed = false
 var roboRot 
 var neighbors = [TileSet.CELL_NEIGHBOR_LEFT_SIDE,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE ,TileSet.CELL_NEIGHBOR_RIGHT_SIDE , TileSet.CELL_NEIGHBOR_TOP_SIDE]
+var i
 
 func run_button_pressed():
 	print("clicked")
@@ -89,6 +90,19 @@ func check_win_condition():
 				if completed == false: 
 					completed = true
 					Global.state = "win"
+
+func breakOut():
+	if Global.breakDepth > 0:
+		var codeBlock
+		var crrIndex = i
+		while crrIndex < commands.get_child_count() and codeBlock == null:
+			crrIndex += 1
+			if commands.get_child(crrIndex).indent == Global.breakDepth and commands.get_child(crrIndex).commandName == "RepeatEnd":
+				codeBlock = commands.get_child(crrIndex)
+				break
+		if codeBlock != null:
+			i = codeBlock.get_index()
+			Global.breakDepth = codeBlock.indent
 
 func get_char_tile():
 	return self.get_cell_tile_data(0,self.local_to_map(robot.position)).get_custom_data("Type")
@@ -233,7 +247,7 @@ func if_condition_check(tile, location):
 
 
 func run_code():
-	var i = 0
+	i = 0
 	while i < commands.get_child_count():
 		if Global.state == "coding":
 			print("BROKE")
@@ -250,7 +264,12 @@ func run_code():
 					rotate_char("Right")
 				"RotateLeft":
 					rotate_char("Left")
+				"Break":
+					breakOut()
+				"RepeatTimes":
+					Global.breakDepth = codeBlock.indent
 				"RepeatEnd":
+					Global.breakDepth = codeBlock.indent
 					var repeatBlockStart = codeBlock.repeatStart
 					print("Repeat amount left" + str(repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft))
 					if repeatBlockStart.get_node("Background").get_node("RepeatDropDown").repeatAmountLeft > 1:
