@@ -1,13 +1,19 @@
 extends TextureButton
-
+@onready var level = $"../../Level"
+var inX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	inX = position.x
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if level.get_child(0).currentLevel == 6:
+		position.x = inX - 275
+	else:
+		position.x = inX
+	
 	#if Global.state == "running":
 		#disabled = true
 	#else:

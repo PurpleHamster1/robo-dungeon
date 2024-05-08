@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cavcasflc2hcn"]
+[gd_scene load_steps=12 format=3 uid="uid://cavcasflc2hcn"]
 
 [ext_resource type="Script" path="res://Jurnal.gd" id="1_pdeci"]
 [ext_resource type="PackedScene" uid="uid://cjn13vk3s3scj" path="res://commandBlocks/move_foreward.tscn" id="1_wuj7j"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cbhwunh0kj2ac" path="res://commandBlocks/rotate_right.tscn" id="4_aq1ig"]
 [ext_resource type="PackedScene" uid="uid://dxog7jilarogj" path="res://commandBlocks/repeat_end.tscn" id="5_ialw7"]
 [ext_resource type="PackedScene" uid="uid://b2w0qow7ap61b" path="res://commandBlocks/repeat_times.tscn" id="6_2yg1n"]
+[ext_resource type="PackedScene" uid="uid://ey0xib711c02" path="res://commandBlocks/if.tscn" id="7_73sdm"]
 [ext_resource type="Texture2D" uid="uid://cmrogm1vt0mxu" path="res://assets/icons/journalmenu.png" id="7_guik0"]
+[ext_resource type="PackedScene" uid="uid://cnc1j4wem8xb0" path="res://commandBlocks/if_end.tscn" id="8_2jtjd"]
+[ext_resource type="PackedScene" uid="uid://djpg8ldf4s324" path="res://commandBlocks/break.tscn" id="9_pgjgr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oprqt"]
 bg_color = Color(0.243137, 0.156863, 0, 1)
@@ -61,6 +64,24 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Repeta
+"
+
+[node name="Daca" type="Button" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(440, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Daca
+"
+
+[node name="Break" type="Button" parent="List/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(440, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Break
 "
 
 [node name="Desc" type="Panel" parent="."]
@@ -212,6 +233,88 @@ position = Vector2(100, 20.5)
 [node name="RepeatDropDown" parent="Desc/Repeta/repeat_times/Background" index="4"]
 script = null
 
+[node name="Daca" type="Control" parent="Desc"]
+visible = false
+z_index = 13
+anchors_preset = 0
+offset_left = -98.0
+offset_top = -45.0
+offset_right = -58.0
+offset_bottom = -5.0
+
+[node name="AvanseazaText" type="RichTextLabel" parent="Desc/Daca"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 97.0
+offset_right = 562.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]  [/center]
+
+	Blocurile de cod care se afla intre aceste doua vor fi executate numai daca se indeplineste conditia specificata."
+
+[node name="If" parent="Desc/Daca" instance=ExtResource("7_73sdm")]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 125.0
+offset_right = 168.0
+offset_bottom = 145.0
+scale = Vector2(1.63097, 1.63097)
+script = null
+
+[node name="IfScript" parent="Desc/Daca/If/Background" index="6"]
+script = null
+
+[node name="IfEnd" parent="Desc/Daca" instance=ExtResource("8_2jtjd")]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 124.0
+offset_right = 508.0
+offset_bottom = 144.0
+scale = Vector2(1.76592, 1.76592)
+script = null
+
+[node name="Break" type="Control" parent="Desc"]
+visible = false
+z_index = 13
+anchors_preset = 0
+offset_left = -98.0
+offset_top = -45.0
+offset_right = -58.0
+offset_bottom = -5.0
+
+[node name="AvanseazaText" type="RichTextLabel" parent="Desc/Break"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 97.0
+offset_right = 562.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]  [/center]
+
+	Acest bloc de cod va oprii executarea comenzii \"Repeta\" in care se afla."
+
+[node name="break" parent="Desc/Break" instance=ExtResource("9_pgjgr")]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 106.0
+offset_right = 311.0
+offset_bottom = 126.0
+scale = Vector2(1.7606, 1.7606)
+script = null
+
 [node name="Panel1" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 13
@@ -244,3 +347,5 @@ texture = ExtResource("7_guik0")
 
 [editable path="Desc/Repeta/RepeatEnd"]
 [editable path="Desc/Repeta/repeat_times"]
+[editable path="Desc/Daca/If"]
+[editable path="Desc/Daca/IfEnd"]

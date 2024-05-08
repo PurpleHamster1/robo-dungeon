@@ -90,6 +90,18 @@ func check_win_condition():
 				if completed == false: 
 					completed = true
 					Global.state = "win"
+		"Level5":
+			if local_to_map(robot.position) == Vector2i(0, 3):
+				if completed == false: 
+					completed = true
+					Global.state = "win"
+		"Level6":
+			if local_to_map(robot.position) == Vector2i(10, 14):
+				if completed == false: 
+					completed = true
+					Global.state = "win"
+					print("|WINNN")
+					Global.highestLevel = 7
 
 func breakOut():
 	if Global.breakDepth > 0:
