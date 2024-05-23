@@ -1243,3 +1243,5 @@ script = ExtResource("11_b37ah")
 [editable path="GUI/Jurnal"]
 [editable path="GUI/Jurnal/Desc/Repeta/RepeatEnd"]
 [editable path="GUI/Jurnal/Desc/Repeta/repeat_times"]
+[editable path="GUI/Jurnal/Desc/Daca/If"]
+[editable path="GUI/Jurnal/Desc/Daca/IfEnd"]
